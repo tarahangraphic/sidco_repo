@@ -1,0 +1,197 @@
+﻿
+@{
+    ViewBag.Title = "هدایای من";
+    Layout = "~/Views/shared/_layout.cshtml";
+}
+<script>
+    var _ListUserGift = [];
+    var _listgift = [];
+    var _listgiftsendway = [];
+    var _list = [];
+
+    function usergiftsendaway(id, IdGiftSendWay) {
+        this.Id = id;
+        this.IdGiftSendWay = IdGiftSendWay;
+    }
+
+    var _usergiftsendaway = new usergiftsendaway(0,0);
+    window.onload = load;
+    function load()
+    {
+        showmadolsendgiftaway();
+        ShowGiftSendWay();
+        Showgrid();
+    }
+    function showmadolsendgiftaway() {
+
+        creatformUserGift(UserGiftSendAway, [{ name: "Id", type: "hidden", title: "" },
+        { name: "IdGiftSendWay", type: "select", title: "نحوه ارسال" }],
+            [{ caption: "ثبت", event: RegisterUserGiftSendAway, Class: "info", IsClose: true },
+            { caption: "بازگشت", event: null, Class: "info", IsClose: true }], "نحوه ارسال هدیه");
+    }
+
+    function RegisterUserGiftSendAway() {
+        _usergiftsendaway.Id = Id.value;
+        _usergiftsendaway.IdGiftSendWay = IdGiftSendWay.value;
+
+        $.ajax({
+            type: "Post",
+            url: "/UserGift/USerGiftSendAway",
+            dataType: 'json',
+            data: _usergiftsendaway,
+            beforeSend: function () {
+                $.blockUI();
+            },
+            success: function (data) {
+                $.unblockUI();
+                Showgrid(data);
+                $(Successful).fadeIn();
+                $(Successful).fadeOut(3000);
+
+            }
+        });
+
+        
+
+    }
+
+    function howtosendgift(id) {
+        btnUserGiftSendAway.click();
+        Id.value = id;
+    }
+
+    function Showgrid(data) {
+        var listusergift = JSON.parse('@Html.Raw(ViewBag.listusergift)');
+        if (data != null) {
+            listusergift = data;
+        }
+        _ListUserGift = listusergift;
+
+        _Username.innerHTML = _ListUserGift[0].UserName;
+
+        DataTableUserGift(listusergift,
+            [{ Data: "Id", Title: "Id" },
+                { Data: "GiftName", Title: "عنوان هدیه" },
+                { Data: "Date_Insert", Title: "تاریخ درخواست" },
+                { Data: "MinPoint", Title: "امتیاز" },
+                { Data: "GiftSendWayName", Title: "نحوه ارسال" },
+                { Data: "GiftStateName", Title: "وضعیت" }], divUserGift, { RowNumber: true },
+                [{ Text: "نحوه ارسال", Icon: "upload", class: "btn btn-primary", event: howtosendgift}],
+            [{ Text: "تایید شد", Icon: "check", class: "btn btn-success btn-dot", event: ConfirmUserGift },
+                { Text: "ارسال شد", Icon: "upload", class: "btn btn-primary btn-dot", event: SendUserGift },
+                { Text: "تایید نشد", Icon: "cancel", class: "btn btn-red btn-dot", event: NotConfirmUserGift }]);
+    }
+
+    function ConfirmUserGift(id) {
+        
+        $.ajax({
+            type: "Post",
+            url: "/UserGift/ConfirmUserGift",
+            dataType: 'json',
+            data: { id: id },
+            beforeSend: function () {
+                $.blockUI();
+            },
+            success: function (data) {
+                $.unblockUI();
+                Showgrid(data);
+                $(Successful).fadeIn();
+                $(Successful).fadeOut(3000);
+
+            }
+        });
+    }
+
+    function SendUserGift(id) {
+      
+        $.ajax({
+            type: "Post",
+            url: "/UserGift/SendUserGift",
+            dataType: 'json',
+            data: { id: id },
+            beforeSend: function () {
+                $.blockUI();
+            },
+            success: function (data) {
+                $.unblockUI();
+                Showgrid(data);
+                $(Successful).fadeIn();
+                $(Successful).fadeOut(3000);
+
+            }
+        });
+    }
+
+    function NotConfirmUserGift(id) {
+       
+        $.ajax({
+            type: "Post",
+            url: "/UserGift/NotConfirmUserGift",
+            dataType: 'json',
+            data: { id: id },
+            beforeSend: function () {
+                $.blockUI();
+            },
+            success: function (data) {
+                $.unblockUI();
+                Showgrid(data);
+                $(Successful).fadeIn();
+                $(Successful).fadeOut(3000);
+
+            }
+        });
+    }
+
+    function ShowGiftSendWay() {
+        var _listgiftsendway = JSON.parse('@Html.Raw(ViewBag._listgiftsendway)');
+        _listgiftsendway = _listgiftsendway;
+        var str = "";
+        for (var i in _listgiftsendway) {
+            str += '<option value="' + _listgiftsendway[i].Id + '">' + _listgiftsendway[i].Display + '</option>';
+        }
+        IdGiftSendWay.innerHTML = str;
+    }
+
+</script>
+
+<div style="display:none;" id="noinformation" class="alert alert-warning">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true" style="font-size:20px">×</span>
+    </button>
+    <strong>توجه!</strong> اطلاعاتی موجود نیست
+</div>
+<div style="display:none;" id="Successful" class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true" style="font-size:20px">×</span>
+    </button>
+    <strong>موفق!</strong> عملیات با موفقیت انجام شد
+</div>
+
+<h3>@ViewBag.Title</h3>
+<div class="row">
+    <div class="col-lg-12 animatedParent animateOnce z-index-50">
+        <div class="panel panel-default animated fadeInUp">
+            <div class="panel-heading clearfix">
+                <h2 id="_Username" name="Username"></h2>
+                <button id="btnUserGiftSendAway" type="button" onclick="UserGiftSendAwayform.reset()" class="btn btn-primary" data-toggle="modal" data-target="#UserGiftSendAwayModal" data-backdrop="static">نحوه ارسال</button>
+
+            </div>
+            <div class="panel-body">
+                <div class="row animatedParent animateOnce z-index-50">
+                    <div class="col-lg-12 animated fadeInUp">
+                        <div id="divUserGift" class="table-responsive">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form style="display:none;" id="FormConfirmUserGift" action="/UserGift/Index" method="get" enctype="application/x-www-form-urlencoded">
+    <input id="_iduserConfirmGift" name="id" />
+</form>
+<div id="UserGiftSendAway">
+
+</div>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4e0786fde6d74a29bbdeff5e40d2089c" Name="Diagram1" ZoomLevel="59">
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblAboutUs" Width="1.5" PointX="7.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblAdmin" Width="1.5" PointX="7.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblAppVersion" Width="1.5" PointX="9.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblCar" Width="1.5" PointX="0.75" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblCarProduct" Width="1.5" PointX="3" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblCity" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblCustomer" Width="1.5" PointX="9.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblGift" Width="1.5" PointX="3" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblGiftSendWay" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblHonors_Lincenses" Width="1.5" PointX="10.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblLog" Width="1.5" PointX="11.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblNotification" Width="1.5" PointX="12.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblOrder" Width="1.5" PointX="3.75" PointY="44.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblOrderDetail" Width="1.5" PointX="6" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblOrderState" Width="1.5" PointX="1.5" PointY="46" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblProduct" Width="1.5" PointX="0.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblProductImage" Width="1.5" PointX="12.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblProductProperty" Width="1.5" PointX="8" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblProductsSerial" Width="1.5" PointX="3" PointY="31.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblProductSuggestion" Width="1.5" PointX="3" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblProperty" Width="1.5" PointX="5.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblRelativeProduct" Width="1.5" PointX="3" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblSerialInputLog" Width="1.5" PointX="10.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblService" Width="1.5" PointX="12.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblSlideShow" Width="1.5" PointX="14.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblSmsLog" Width="1.5" PointX="14.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblSuggestion" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblSuggestionState" Width="1.5" PointX="3" PointY="49.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblUser" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblUserCar" Width="1.5" PointX="8.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblUserGift" Width="1.5" PointX="5.25" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblUserGiftState" Width="1.5" PointX="3" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblUserRegisterProduct" Width="1.5" PointX="5.25" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAVAR_JHB_DBModel.tblUserType" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblCarProduct_tblCar" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblUserCar_tblCar" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblCarProduct_tblProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblUser_tblCity" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblGift_tblProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblUserGift_tblGift" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblUserGift_tblGiftSendWay" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblOrder_tblOrderState" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblOrder_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblOrderDetail_tblOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblOrderDetail_tblProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblProductProperty_tblProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblProductsSerial_tblProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblProductSuggestion_tblProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblRelativeProduct_tblProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblRelativeProduct_tblProduct1" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblProductProperty_tblProperty" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblUserRegisterProduct_tblProductsSerial" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblSuggestion_tblSuggestionState" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblSuggestion_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblUser_tblUserType" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblUserCar_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblUserGift_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblUserRegisterProduct_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="BAVAR_JHB_DBModel.FK_tblUserGift_tblUserGiftState" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

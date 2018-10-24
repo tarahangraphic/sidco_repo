@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "مدیریت ویژگی های محصولات";
+    Layout = "~/Views/shared/_layout.cshtml";
+}
+@section viewsection{
+    <script src="~/Script/Pages/Property.js"></script>
+}
+<div style="display:none;" id="Successful" class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true" style="font-size:20px">×</span>
+    </button>
+    <strong>موفق!</strong> عملیات با موفقیت انجام شد
+</div>
+
+<div style="display:none;" id="deleteinformation" class="alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true" style="font-size:20px">×</span>
+    </button>
+    <strong>حذف!</strong> حذف با موفقیت انجام شد
+</div>
+
+<div class="panel-body">
+    <div class="row animatedParent animateOnce z-index-50">
+        <div class="col-lg-12 animated fadeInUp">
+            <h3 class="title">مدیریت ویژگی های محصولات</h3>
+        </div>
+    </div>
+    <div id="Propertyregister">
+
+
+    </div>
+    <div id="PropertyListregister">
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12 animatedParent animateOnce z-index-50">
+            <div class="panel panel-default animated fadeInUp">
+                <div class="panel-heading clearfix">
+                    <h3 id="TitlePage"></h3>
+                    <button style="margin-right:20px;margin-bottom:20px;" id="btnRegisterProperty" type="button" onclick="Propertyregisterform.reset()" class="btn btn-primary" data-toggle="modal" data-target="#PropertyregisterModal" data-backdrop="static">ثبت جدید</button>
+                    <button style="margin-right:20px;margin-top:2px;" id="btnRegisterlist" type="button" onclick="PropertyListregisterform.reset()" class="btn btn-primary" data-toggle="modal" data-target="#PropertyListregisterModal" data-backdrop="static">ثبت جدید</button>
+                    <button style="margin-right:700px;" id="btnReturn" type="button" class="btn btn-primary">بازگشت</button>
+                </div>
+                <div class="panel-body">
+                    <div id="divProperty" class="table-responsive">
+                        <img id="imgLoading" src="~/img/loading.gif" />
+                    </div>
+                    <div id="divPropertylist" class="table-responsive">
+                        <img id="imgLoading" src="~/img/loading.gif" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

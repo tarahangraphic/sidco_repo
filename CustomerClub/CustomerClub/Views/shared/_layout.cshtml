@@ -1,0 +1,417 @@
+﻿@using CustomerClub.Models
+
+@{
+    Layout = null;
+}
+
+@{
+    BAVAR_JHB_DBEntities _context = new BAVAR_JHB_DBEntities();
+    string Username = Session["Username"].ToString();
+    tblAdmin admin = _context.tblAdmin.First(p => p.Username == Username);
+    ViewBag.Username = admin.Name;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Mouldifi - A fully responsive, HTML5 based admin theme">
+    <meta name="keywords" content="Responsive, HTML5, admin theme, business, professional, Mouldifi, web design, CSS3">
+    <title>@ViewBag.Title</title>
+
+    <link rel='shortcut icon' type='image/x-icon' href='images/favicon.ico' />
+
+    <link href="~/css/entypo.css" rel="stylesheet">
+
+    <link href="~/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="~/css/plugins/css3-animate-it-plugin/animations.css" rel="stylesheet">
+
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="~/css/mouldifi-core.css" rel="stylesheet">
+    <link href="~/css/plugins/datepicker/bootstrap-datepicker.css" rel="stylesheet">
+    <link href="~/css/plugins/colorpicker/bootstrap-colorpicker.css" rel="stylesheet">
+    <link href="~/css/plugins/nouislider/nouislider.css" rel="stylesheet">
+    <link href="~/css/plugins/select2/select2.css" rel="stylesheet">
+    <link href="~/css/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="~/css/plugins/markdown/bootstrap-markdown.min.css" rel="stylesheet">
+
+    <link href="~/css/mouldifi-forms.css" rel="stylesheet">
+    <link href="~/css/plugins/datatables/jquery.dataTables.css" rel="stylesheet">
+    <link href="~/js/plugins/datatables/extensions/Buttons/css/buttons.dataTables.css" rel="stylesheet" />
+    <link href="~/css/bootstrap-rtl.min.css" rel="stylesheet">
+
+    <link href="~/css/mouldifi-rtl-core.css" rel="stylesheet">
+   
+</head>
+<body>
+
+
+    <div class="page-container">
+
+
+        <div class="page-sidebar">
+
+            <header class="site-header">
+                <div class="site-logo"><a href="~/Home/Index"><img src="" alt="داشبورد" title="داشبورد"></a></div>
+                <div class="sidebar-collapse hidden-xs"><a class="sidebar-collapse-icon" href="#"><i class="icon-menu"></i></a></div>
+                <div class="sidebar-mobile-menu visible-xs"><a data-target="#side-nav" data-toggle="collapse" class="mobile-menu-icon" href="#"><i class="icon-menu"></i></a></div>
+            </header>
+
+            <ul id="side-nav" class="main-menu navbar-collapse collapse">
+
+                <li>
+                    <a href="~/SlideShow/Index"><i class="fa fa-slideshare"></i><span class="title"> مدیریت اسلاید شو</span></a>
+
+                </li>
+                <li>
+                    <a href="~/AboutUs/Index"><i class="icon-newspaper"></i><span class="title"> مدیریت درباره ی ما</span></a>
+                </li>
+                <li>
+                    <a href="~/Car/Index"><i class="fa fa-car"></i><span class="title">خودرو</span></a>
+                </li>
+                <li>
+                    <a href="~/Notification/Index"><i class="icon-mail"></i><span class="title">ارسال پیام</span></a>
+                </li>
+                <li>
+                    <a href="~/AppVersion/Index"><i class="icon-upload-cloud"></i><span class="title">ورژن اپلیکشن</span></a>
+                </li>
+                <li>
+                    <a href="~/Customer/Index"><i class="icon-users"></i><span class="title">مشتریان ما</span></a>
+                </li>
+                <li>
+                    <a href="~/Services/Index"><i class="icon-share"></i><span class="title">خدمات ما</span></a>
+                </li>
+                <li>
+                    <a href="~/Users/Index"><i class="icon-user"></i><span class="title">مدیریت کاربران</span></a>
+                </li>
+
+                <li>
+                    <a href="~/Suggestion/Index"><i class="fa fa-comments"></i><span class="title">مدیریت پیشنهادات و انتقادات</span></a>
+                </li>
+                <li>
+                    <a href="~/Gift/Index"><i class="fa fa-gift"></i><span class="title">مدیریت هدایا باشگاه مشتریان</span></a>
+                </li>
+
+                <li>
+                    <a href="~/ShowUserRequest/Index"><i class="icon-twitter-circled"></i><span class="title">مشاهده درخواست نمایندگان</span></a>
+
+                </li>
+                <li class="has-sub">
+                    <a href="#"><i class="icon-window"></i><span class="title"> مدیریت محصولات</span></a>
+                    <ul class="nav collapse">
+                        <li>
+                            <a href="~/Product/Index"><i class="icon-layout"></i><span class="title">محصولات</span></a>
+
+                        </li>
+                        <li>
+                            <a href="~/ProductsSerial/Index"><i class="fa fa-barcode"></i><span class="title">سریال محصولات</span></a>
+                        </li>
+                        <li>
+                            <a href="~/Property/Index"><i class="fa fa-cog"></i><span class="title"> مدیریت ویزگی های محصولات</span></a>
+
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="~/Order/Index"><i class="icon-credit-card"></i><span class="title">مدیریت سفارشات</span></a>
+
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="main-container gray-bg">
+
+
+            <div class="main-header row">
+                <div class="col-sm-6 col-xs-7">
+
+
+                    <ul class="user-info pull-left">
+                        <li class="profile-info dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"> <img width="44" class="img-circle avatar" alt="" src="images/man-3.jpg"> @ViewBag.Username <span class="caret"></span></a>
+
+
+                            <ul class="dropdown-menu">
+                                @*<li><a href="#/"><i class="icon-user"></i>پروفایل من</a></li>
+                                    <li><a href="#/"><i class="icon-mail"></i> پیام ها</a></li>
+                                    <li><a href="#"><i class="icon-clipboard"></i> وظایف</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#"><i class="icon-cog"></i> تنظیمات اکانت</a></li>*@
+                                <li><a href="~/Login/LogoutAdmin"><i class="icon-logout"></i> خروج</a></li>
+                            </ul>
+
+
+                        </li>
+                    </ul>
+
+
+                </div>
+
+                <div class="col-sm-6 col-xs-5">
+                    <div class="pull-right">
+
+                        <ul class="user-info pull-left">
+
+
+                            <li class="notifications dropdown">
+                                <a data-close-others="true" data-hover="dropdown" data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-attention"></i><span class="badge badge-info">6</span></a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li class="first">
+                                        <div class="small"><a class="pull-right danger" href="#">علامت به عنوان خوانده شده</a> شما <strong>3</strong> اطلاعیه های جدید دارید.</div>
+                                    </li>
+                                    <li>
+                                        <ul class="dropdown-list">
+                                            <li class="unread notification-success"><a href="#"><i class="icon-user-add pull-right"></i><span class="block-line strong"> ثبت نام کاربر جدید</span><span class="block-line small">30 ثانیه قبل</span></a></li>
+                                            <li class="unread notification-secondary"><a href="#"><i class="icon-heart pull-right"></i><span class="block-line strong">یک نفر این مطلب را پسندید</span><span class="block-line small">60 ثانیه قبل</span></a></li>
+                                            <li class="unread notification-primary"><a href="#"><i class="icon-user pull-right"></i><span class="block-line strong">تنظیمات تغییر کرد</span><span class="block-line small">2 ساعت قبل</span></a></li>
+                                            <li class="notification-danger"><a href="#"><i class="icon-cancel-circled pull-right"></i><span class="block-line strong">یک نفر این مطلب را پسندید</span><span class="block-line small">60 ثانیه قبل</span></a></li>
+                                            <li class="notification-info"><a href="#"><i class="icon-info pull-right"></i><span class="block-line strong">یک نفر این مطلب را پسندید</span><span class="block-line small">60 ثانیه قبل</span></a></li>
+                                            <li class="notification-warning"><a href="#"><i class="icon-rss pull-right"></i><span class="block-line strong">یک نفر این مطلب را پسندید</span><span class="block-line small">60 ثانیه قبل</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="external-last"> <a href="#" class="danger">مشاهده تمام اطلاعیه ها</a> </li>
+                                </ul>
+                            </li>
+
+                            <li class="notifications dropdown">
+                                <a data-close-others="true" data-hover="dropdown" data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-mail"></i><span class="badge badge-secondary">12</span></a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li class="first">
+                                        <div class="dropdown-content-header"><i class="fa fa-pencil-square-o pull-right"></i>پیام ها</div>
+                                    </li>
+                                    <li>
+                                        <ul class="media-list">
+                                            <li class="media">
+                                                <div class="media-left"><img alt="" class="img-circle img-sm" src="images/domnic-brown.png"></div>
+                                                <div class="media-body">
+                                                    <a class="media-heading" href="#">
+                                                        <span class="text-semibold">علی احمدی</span>
+                                                        <span class="media-annotation pull-right">Tue</span>
+                                                    </a>
+                                                    <span class="text-muted">پروژه شما برای تلفن های موبایل جالب است من دوست دارم این را بررسی کنم...</span>
+                                                </div>
+                                            </li>
+                                            <li class="media">
+                                                <div class="media-left"><img alt="" class="img-circle img-sm" src="images/john-smith.png"></div>
+                                                <div class="media-body">
+                                                    <a class="media-heading" href="#">
+                                                        <span class="text-semibold">رضا حسینی</span>
+                                                        <span class="media-annotation pull-right">12:30</span>
+                                                    </a>
+                                                    <span class="text-muted">با تشکر از شما برای ارسال چنین محتوایی فوق العاده. نوشتن برجسته بود...</span>
+                                                </div>
+                                            </li>
+                                            <li class="media">
+                                                <div class="media-left"><img alt="" class="img-circle img-sm" src="images/stella-johnson.png"></div>
+                                                <div class="media-body">
+                                                    <a class="media-heading" href="#">
+                                                        <span class="text-semibold">محمد محمدی</span>
+                                                        <span class="media-annotation pull-right">2 روز قبل</span>
+                                                    </a>
+                                                    <span class="text-muted">از شما متشکریم که به ما اعتماد کردید که منبع شما برای محصولات ورزشی با کیفیت بالا باشد...</span>
+                                                </div>
+                                            </li>
+                                            <li class="media">
+                                                <div class="media-left"><img alt="" class="img-circle img-sm" src="images/alex-dolgove.png"></div>
+                                                <div class="media-body">
+                                                    <a class="media-heading" href="#">
+                                                        <span class="text-semibold">محمد نوری</span>
+                                                        <span class="media-annotation pull-right">10:45</span>
+                                                    </a>
+                                                    <span class="text-muted">پس از جلسه جمعه ما در مورد رابطه کسب و کار ما و چقدر خوش شانس بود...</span>
+                                                </div>
+                                            </li>
+                                            <li class="media">
+                                                <div class="media-left"><img alt="" class="img-circle img-sm" src="images/domnic-brown.png"></div>
+                                                <div class="media-body">
+                                                    <a class="media-heading" href="#">
+                                                        <span class="text-semibold">علی احمدی</span>
+                                                        <span class="media-annotation pull-right">4:00</span>
+                                                    </a>
+                                                    <span class="text-muted">من می خواهم از این فرصت برای تشکر از شما برای همکاری شما در اخطار کامل استفاده کنید...</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="external-last"> <a class="danger" href="#">تمام پیام ها</a> </li>
+                                </ul>
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="main-content">
+
+                <img id="displayBox" style="display:none;height:100px;width:100%;" src="~/img/Loading.svg"/>
+                @RenderBody()
+
+            </div>
+
+        </div>
+        <img id="arrowimage" src="~/img/arrow-up-icon.png" style="display:none;cursor:pointer;position:fixed;height:30px;width:30px;left:10px;bottom:10px;" />
+
+    </div>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/Script/jquery.blockUI.js"></script>
+    <script src="~/js/plugins/select2/select2.full.min.js"></script>
+    <script src="~/js/plugins/css3-animate-it-plugin/css3-animate-it.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/plugins/select2/select2.full.min.js"></script>
+    <script src="~/js/plugins/metismenu/jquery.metisMenu.js"></script>
+    <script src="~/js/plugins/blockui-master/jquery-ui.js"></script>
+    <script src="~/js/plugins/blockui-master/jquery.blockUI.js"></script>
+    <script src="~/js/plugins/flot/jquery.flot.min.js"></script>
+    <script src="~/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="~/js/plugins/flot/jquery.flot.resize.min.js"></script>
+    <script src="~/js/plugins/flot/jquery.flot.selection.min.js"></script>
+    <script src="~/js/plugins/flot/jquery.flot.pie.min.js"></script>
+    <script src="~/js/plugins/flot/jquery.flot.time.min.js"></script>
+
+    <script src="~/js/plugins/nouislider/nouislider.min.js"></script>
+    <!-- Input Mask-->
+    <script src="~/js/plugins/jasny/jasny-bootstrap.min.js"></script>
+
+    <!--Bootstrap ColorPicker-->
+    <script src="~/js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+    <!--Bootstrap DatePicker-->
+    <script src="~/js/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <link href="~/css/plugins/pdatepicker/css/daterangepicker.css" rel="stylesheet" />
+
+    <link href="~/css/plugins/pdatepicker/css/datepicker-theme.css" rel="stylesheet" />
+
+    <script src="~/css/plugins/pdatepicker/js/moment.min.js"></script>
+    <script src="~/css/plugins/pdatepicker/js/moment-jalaali.js"></script>
+    <script src="~/css/plugins/pdatepicker/js/daterangepicker-fa-ex.js"></script>
+   
+
+
+
+    <script src="~/js/functions.js"></script>
+    <script src="~/js/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/js/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="~/js/plugins/datatables/extensions/Buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/js/plugins/datatables/jszip.min.js"></script>
+    <script src="~/js/plugins/datatables/pdfmake.min.js"></script>
+    <script src="~/js/plugins/datatables/vfs_fonts.js"></script>
+    <script src="~/js/plugins/datatables/extensions/Buttons/js/buttons.html5.js"></script>
+    <script src="~/js/plugins/datatables/extensions/Buttons/js/buttons.colVis.js"></script>
+    <script src="~/js/plugins/chartjs/Chart.min.js"></script>
+    <script src="~/js/plugins/chartist/chartist.min.js"></script>
+    <script src="~/js/plugins/chartist/chartist-script.js"></script>
+    <script src="~/js/plugins/chartjs/Chart.min.js"></script>
+    <script src="~/js/plugins/summernote/summernote.min.js"></script>
+    <script src="~/js/plugins/markdown/bootstrap-markdown.js"></script>
+    <script src="~/js/plugins/markdown/markdown.js"></script>
+    <script src="~/Script/model/Customer.js"></script>
+    <script src="~/Script/model/Product.js"></script>
+    <script src="~/Script/modals/modalCars.js"></script>
+    <script src="~/Script/model/CarProduct.js"></script>
+    <script src="~/Script/model/ProductSerial.js"></script>
+    <script src="~/Script/model/ProductSuggestion.js"></script>
+    <script src="~/Script/model/UserCar.js"></script>
+    <script src="~/Script/model/UserRegisterProduct.js"></script>
+    <script src="~/Script/model/Gift.js"></script>
+    <script src="~/Script/model/OrderDetail.js"></script>
+
+
+    <script src="~/Script/modals/modalCarList.js"></script>
+    <script src="~/Script/modals/modalCustomer.js"></script>
+    <script src="~/Script/modals/modalServices.js"></script>
+    <script src="~/Script/modals/modalProduct.js"></script>
+    <script src="~/Script/modals/modalListproduct.js"></script>
+    <script src="~/Script/model/SlideShow.js"></script>
+    <script src="~/Script/modals/modalUser.js"></script>
+    <script src="~/Script/modals/modalAboutUs.js"></script>
+    <script src="~/Script/modals/modalUserDetail.js"></script>
+    <script src="~/Script/modals/modalSlideShow.js"></script>
+    <script src="~/Script/modals/modalListAboutUs.js"></script>
+    <script src="~/Script/modals/modalCarProduct.js"></script>
+    <script src="~/Script/modals/modalProductSerial.js"></script>
+    <script src="~/Script/modals/modalProductSuggestion.js"></script>
+    <script src="~/Script/modals/modalUserCar.js"></script>
+    <script src="~/Script/modals/modalUserRegisterProduct.js"></script>
+    <script src="~/Script/modals/modalSuggestion.js"></script>
+    <script src="~/Script/modals/modalGift.js"></script>
+    <script src="~/Script/modals/modaluserGift.js"></script>
+    <script src="~/Script/modals/modalOrderDetail.js"></script>
+
+
+
+    <script src="~/Script/ajaxsscrip.min.js"></script>
+
+    <script src="~/Script/validitycheck.js"></script>
+    <script src="~/Script/filltag.js"></script>
+    <script src="~/Script/model/AboutUs.js"></script>
+    <script src="~/Script/model/Car.js"></script>
+    <script src="~/Script/model/Services.js"></script>
+    <script src="~/Script/model/User.js"></script>
+    <script src="~/Script/model/AppVersion.js"></script>
+    <script src="~/Script/model/Suggestion.js"></script>
+    <script src="~/Script/fillselect.js"></script>
+    <script src="~/Script/DataTable/DataTable.js"></script>
+    <script src="~/Script/DataTable/DataTableCar.js"></script>
+    <script src="~/Script/DataTable/DataTableforAboutUs.js"></script>
+    <script src="~/Script/DataTablePhoto/DataTableCustomer.js"></script>
+    <script src="~/Script/DataTablePhoto/DataTableGroupAboutUs.js"></script>
+    <script src="~/Script/DataTablePhoto/DataTableServices.js"></script>
+    <script src="~/Script/DataTablePhoto/DataTableSlideShow.js"></script>
+    <script src="~/Script/DataTablePhoto/DataTableProduct.js"></script>
+    <script src="~/Script/DataTablePhoto/DataTableUser.js"></script>
+    <script src="~/Script/DataTable/DataTableCarProduct.js"></script>
+    <script src="~/Script/DataTable/DataTableProductSerial.js"></script>
+    <script src="~/Script/DataTable/DataTableProductSuggestion.js"></script>
+    <script src="~/Script/DataTable/DataTableUserCar.js"></script>
+    <script src="~/Script/DataTable/DataTableUserRegisterProduct.js"></script>
+    <script src="~/Script/DataTable/DataTableSuggestion.js"></script>
+    <script src="~/Script/DataTable/DataTableProductPropety.js"></script>
+    <script src="~/Script/DataTable/DataTableProperty.js"></script>
+    <script src="~/Script/DataTablePhoto/DataTableGift.js"></script>
+    <script src="~/Script/DataTable/DataTableUserReqInPageUser.js"></script>
+    <script src="~/Script/DataTable/DataTableUserRequest.js"></script>
+    <script src="~/Script/DataTable/DataTableRelativProduct.js"></script>
+    <script src="~/Script/DataTable/DataTableOrder.js"></script>
+    <script src="~/Script/DataTable/DataTableOrderDetail.js"></script>
+    <script src="~/Script/DataTablePhoto/DataTableUserGift.js"></script>
+    <script src="~/Script/modals/modalProperty.js"></script>
+    <script src="~/Script/model/Property.js"></script>
+
+    
+
+    <script>
+        $(load);
+        function load() {
+            $(window).scroll(function () {
+                var _scrollsize = $(window).scrollTop();
+                if (_scrollsize > 50) {
+                    $("#arrowimage").fadeIn();
+                }
+                else {
+                    $("#arrowimage").fadeOut();
+                }
+            })
+            $("#arrowimage").click(function () {
+                var _scrollsize = $(window).scrollTop();
+                var time = setInterval(function () {
+                    _scrollsize = _scrollsize - 2;
+                    $(window).scrollTop(_scrollsize);
+                    if (_scrollsize <= 0)
+                        clearInterval(time);
+                }, 1);
+            });
+        }
+
+    </script>
+    @RenderSection("viewsection", false)
+</body>
+</html>

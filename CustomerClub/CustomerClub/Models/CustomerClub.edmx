@@ -1,0 +1,2717 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BAVAR_JHB_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblAboutUs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Text" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="IdParent" Type="int" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblAdmin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Username" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblAppVersion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VersionCode" Type="int" />
+          <Property Name="VersionName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReleaseDate" Type="datetime" />
+          <Property Name="Url" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblCar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Model" Type="nvarchar(max)" />
+          <Property Name="IdParent" Type="bigint" />
+          <Property Name="IdSort" Type="bigint" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblCarProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCar" Type="bigint" />
+          <Property Name="IdProduct" Type="bigint" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblCity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdParent" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblCustomer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" />
+          <Property Name="Url" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblGift">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProduct" Type="bigint" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="MinPoint" Type="int" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="IdSort" Type="bigint" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblGiftSendWay">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="IdSort" Type="bigint" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblHonors&amp;Lincenses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Text" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Type" Type="int" />
+          <Property Name="IdSort" Type="bigint" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAdmin" Type="bigint" />
+          <Property Name="Operation" Type="nvarchar(max)" />
+          <Property Name="_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblNotification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Text" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdProduct" Type="bigint" />
+          <Property Name="Recievers" Type="nvarchar(max)" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="bigint" />
+          <Property Name="IdOrderState" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DateStateEditing" Type="datetime" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblOrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdOrder" Type="bigint" />
+          <Property Name="IdProduct" Type="bigint" />
+          <Property Name="Count" Type="bigint" />
+          <Property Name="Price" Type="bigint" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblOrderState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Model" Type="nvarchar(max)" />
+          <Property Name="IdParent" Type="bigint" />
+          <Property Name="StateGroupProduct" Type="bit" />
+          <Property Name="IdSortGroup" Type="bigint" />
+          <Property Name="IdSortProduct" Type="bigint" />
+          <Property Name="StateExist" Type="bit" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblProductImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Url" Type="nvarchar(max)" />
+          <Property Name="IdProduct" Type="bigint" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblProductProperty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProduct" Type="bigint" />
+          <Property Name="IdProperty" Type="bigint" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="IdSort" Type="bigint" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblProductsSerial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProduct" Type="bigint" />
+          <Property Name="Serial" Type="nvarchar(max)" />
+          <Property Name="DateProduce" Type="datetime" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblProductSuggestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProduct" Type="bigint" />
+          <Property Name="IdSort" Type="bigint" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblProperty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="IdUserTypePermision" Type="bigint" Nullable="false" />
+          <Property Name="DeletePermision" Type="bit" />
+          <Property Name="IdParent" Type="bigint" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblRelativeProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProduct_Master" Type="bigint" />
+          <Property Name="IdProduct_Slave" Type="bigint" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblSerialInputLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="bigint" />
+          <Property Name="Serial" Type="nvarchar(max)" />
+          <Property Name="IdProductsSerial" Type="bigint" />
+          <Property Name="State" Type="int" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Url" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblSlideShow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="IdSort" Type="bigint" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblSmsLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="_Date" Type="datetime" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Text" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblSuggestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="bigint" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="QuestionText" Type="nvarchar(max)" />
+          <Property Name="DateQuestionText" Type="datetime" />
+          <Property Name="AnswerText" Type="nvarchar(max)" />
+          <Property Name="DateAnswerText" Type="datetime" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdState" Type="int" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblSuggestionState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeMelli" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lname" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdCity" Type="bigint" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tell" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateBirthday" Type="datetime" />
+          <Property Name="Sex" Type="bit" />
+          <Property Name="Married" Type="bit" />
+          <Property Name="JobName" Type="nvarchar(max)" />
+          <Property Name="Home" Type="bit" />
+          <Property Name="IdUserType" Type="bigint" />
+          <Property Name="StateRegister" Type="int" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="AccountCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CodePostal" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fathername" Type="nvarchar" MaxLength="50" />
+          <Property Name="LatLon" Type="nvarchar" MaxLength="50" />
+          <Property Name="AgentCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="AgentRate" Type="float" />
+          <Property Name="AgentLicenseImage" Type="nvarchar" MaxLength="50" />
+          <Property Name="Agent_History" Type="nvarchar(max)" />
+          <Property Name="Agent_Place_Area" Type="nvarchar(max)" />
+          <Property Name="Agent_BankAcouuntNumber" Type="nvarchar(max)" />
+          <Property Name="Agent_Lisence" Type="bit" />
+          <Property Name="Agent_JobType" Type="bit" />
+          <Property Name="Agent_Malek" Type="bit" />
+          <Property Name="Agent_PosState" Type="bit" />
+          <Property Name="Agent_IdType" Type="int" />
+          <Property Name="Token" Type="nvarchar(max)" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblUserCar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCar" Type="bigint" />
+          <Property Name="IdUser" Type="bigint" Nullable="false" />
+          <Property Name="Pelak" Type="nvarchar" MaxLength="50" />
+          <Property Name="Kilometer" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProduceYear" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblUserGift">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdGift" Type="bigint" />
+          <Property Name="IdUser" Type="bigint" />
+          <Property Name="MinPoint" Type="int" />
+          <Property Name="IdGiftSendWay" Type="bigint" />
+          <Property Name="IdAgent_User" Type="bigint" />
+          <Property Name="IdUserGiftState" Type="int" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblUserGiftState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblUserRegisterProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProductSerial" Type="bigint" />
+          <Property Name="IdUser" Type="bigint" />
+          <Property Name="DateRegister" Type="datetime" />
+          <Property Name="Point" Type="int" />
+          <Property Name="StateBreakDown" Type="bit" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblUserType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Date_Insert" Type="datetime" />
+          <Property Name="IdUser_Insert" Type="bigint" />
+          <Property Name="Date_Update" Type="datetime" />
+          <Property Name="IdUser_Update" Type="bigint" />
+          <Property Name="Date_Delete" Type="datetime" />
+          <Property Name="IdUser_Delete" Type="bigint" />
+          <Property Name="StateDelete" Type="bit" />
+        </EntityType>
+        <Association Name="FK_tblCarProduct_tblCar">
+          <End Role="tblCar" Type="Self.tblCar" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblCarProduct" Type="Self.tblCarProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblCarProduct">
+              <PropertyRef Name="IdCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCarProduct_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblCarProduct" Type="Self.tblCarProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblCarProduct">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblGift_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblGift" Type="Self.tblGift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblGift">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrder_tblOrderState">
+          <End Role="tblOrderState" Type="Self.tblOrderState" Multiplicity="0..1" />
+          <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrderState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblOrder">
+              <PropertyRef Name="IdOrderState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrder_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblOrder">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrderDetail_tblOrder">
+          <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblOrderDetail" Type="Self.tblOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblOrderDetail">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrderDetail_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblOrderDetail" Type="Self.tblOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblOrderDetail">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductProperty_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProductProperty" Type="Self.tblProductProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProductProperty">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductProperty_tblProperty">
+          <End Role="tblProperty" Type="Self.tblProperty" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProductProperty" Type="Self.tblProductProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProperty">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProductProperty">
+              <PropertyRef Name="IdProperty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductsSerial_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProductsSerial" Type="Self.tblProductsSerial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProductsSerial">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductSuggestion_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProductSuggestion" Type="Self.tblProductSuggestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProductSuggestion">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRelativeProduct_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblRelativeProduct" Type="Self.tblRelativeProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblRelativeProduct">
+              <PropertyRef Name="IdProduct_Slave" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRelativeProduct_tblProduct1">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1" />
+          <End Role="tblRelativeProduct" Type="Self.tblRelativeProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblRelativeProduct">
+              <PropertyRef Name="IdProduct_Master" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSuggestion_tblSuggestionState">
+          <End Role="tblSuggestionState" Type="Self.tblSuggestionState" Multiplicity="0..1" />
+          <End Role="tblSuggestion" Type="Self.tblSuggestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSuggestionState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblSuggestion">
+              <PropertyRef Name="IdState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSuggestion_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblSuggestion" Type="Self.tblSuggestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblSuggestion">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUser_tblCity">
+          <End Role="tblCity" Type="Self.tblCity" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUser_tblUserType">
+          <End Role="tblUserType" Type="Self.tblUserType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="IdUserType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserCar_tblCar">
+          <End Role="tblCar" Type="Self.tblCar" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserCar" Type="Self.tblUserCar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserCar">
+              <PropertyRef Name="IdCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserCar_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserCar" Type="Self.tblUserCar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserCar">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserGift_tblGift">
+          <End Role="tblGift" Type="Self.tblGift" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserGift" Type="Self.tblUserGift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGift">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserGift">
+              <PropertyRef Name="IdGift" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserGift_tblGiftSendWay">
+          <End Role="tblGiftSendWay" Type="Self.tblGiftSendWay" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserGift" Type="Self.tblUserGift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGiftSendWay">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserGift">
+              <PropertyRef Name="IdGiftSendWay" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserGift_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserGift" Type="Self.tblUserGift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserGift">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserGift_tblUserGiftState">
+          <End Role="tblUserGiftState" Type="Self.tblUserGiftState" Multiplicity="0..1" />
+          <End Role="tblUserGift" Type="Self.tblUserGift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserGiftState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserGift">
+              <PropertyRef Name="IdUserGiftState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserRegisterProduct_tblProductsSerial">
+          <End Role="tblProductsSerial" Type="Self.tblProductsSerial" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserRegisterProduct" Type="Self.tblUserRegisterProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProductsSerial">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserRegisterProduct">
+              <PropertyRef Name="IdProductSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserRegisterProduct_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserRegisterProduct" Type="Self.tblUserRegisterProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserRegisterProduct">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BAVAR_JHB_DBModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAboutUs" EntityType="Self.tblAboutUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAdmin" EntityType="Self.tblAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAppVersion" EntityType="Self.tblAppVersion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCar" EntityType="Self.tblCar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCarProduct" EntityType="Self.tblCarProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCity" EntityType="Self.tblCity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCustomer" EntityType="Self.tblCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblGift" EntityType="Self.tblGift" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblGiftSendWay" EntityType="Self.tblGiftSendWay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblHonors&amp;Lincenses" EntityType="Self.tblHonors&amp;Lincenses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLog" EntityType="Self.tblLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblNotification" EntityType="Self.tblNotification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrder" EntityType="Self.tblOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrderDetail" EntityType="Self.tblOrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrderState" EntityType="Self.tblOrderState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductImage" EntityType="Self.tblProductImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductProperty" EntityType="Self.tblProductProperty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductsSerial" EntityType="Self.tblProductsSerial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductSuggestion" EntityType="Self.tblProductSuggestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProperty" EntityType="Self.tblProperty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRelativeProduct" EntityType="Self.tblRelativeProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSerialInputLog" EntityType="Self.tblSerialInputLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblService" EntityType="Self.tblService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSlideShow" EntityType="Self.tblSlideShow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSmsLog" EntityType="Self.tblSmsLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSuggestion" EntityType="Self.tblSuggestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSuggestionState" EntityType="Self.tblSuggestionState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserCar" EntityType="Self.tblUserCar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserGift" EntityType="Self.tblUserGift" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserGiftState" EntityType="Self.tblUserGiftState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserRegisterProduct" EntityType="Self.tblUserRegisterProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserType" EntityType="Self.tblUserType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblCarProduct_tblCar" Association="Self.FK_tblCarProduct_tblCar">
+            <End Role="tblCar" EntitySet="tblCar" />
+            <End Role="tblCarProduct" EntitySet="tblCarProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCarProduct_tblProduct" Association="Self.FK_tblCarProduct_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblCarProduct" EntitySet="tblCarProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblGift_tblProduct" Association="Self.FK_tblGift_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblGift" EntitySet="tblGift" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrder_tblOrderState" Association="Self.FK_tblOrder_tblOrderState">
+            <End Role="tblOrderState" EntitySet="tblOrderState" />
+            <End Role="tblOrder" EntitySet="tblOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrder_tblUser" Association="Self.FK_tblOrder_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblOrder" EntitySet="tblOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrderDetail_tblOrder" Association="Self.FK_tblOrderDetail_tblOrder">
+            <End Role="tblOrder" EntitySet="tblOrder" />
+            <End Role="tblOrderDetail" EntitySet="tblOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrderDetail_tblProduct" Association="Self.FK_tblOrderDetail_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblOrderDetail" EntitySet="tblOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductProperty_tblProduct" Association="Self.FK_tblProductProperty_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblProductProperty" EntitySet="tblProductProperty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductProperty_tblProperty" Association="Self.FK_tblProductProperty_tblProperty">
+            <End Role="tblProperty" EntitySet="tblProperty" />
+            <End Role="tblProductProperty" EntitySet="tblProductProperty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductsSerial_tblProduct" Association="Self.FK_tblProductsSerial_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblProductsSerial" EntitySet="tblProductsSerial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductSuggestion_tblProduct" Association="Self.FK_tblProductSuggestion_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblProductSuggestion" EntitySet="tblProductSuggestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRelativeProduct_tblProduct" Association="Self.FK_tblRelativeProduct_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblRelativeProduct" EntitySet="tblRelativeProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRelativeProduct_tblProduct1" Association="Self.FK_tblRelativeProduct_tblProduct1">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblRelativeProduct" EntitySet="tblRelativeProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSuggestion_tblSuggestionState" Association="Self.FK_tblSuggestion_tblSuggestionState">
+            <End Role="tblSuggestionState" EntitySet="tblSuggestionState" />
+            <End Role="tblSuggestion" EntitySet="tblSuggestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSuggestion_tblUser" Association="Self.FK_tblSuggestion_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblSuggestion" EntitySet="tblSuggestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUser_tblCity" Association="Self.FK_tblUser_tblCity">
+            <End Role="tblCity" EntitySet="tblCity" />
+            <End Role="tblUser" EntitySet="tblUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUser_tblUserType" Association="Self.FK_tblUser_tblUserType">
+            <End Role="tblUserType" EntitySet="tblUserType" />
+            <End Role="tblUser" EntitySet="tblUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserCar_tblCar" Association="Self.FK_tblUserCar_tblCar">
+            <End Role="tblCar" EntitySet="tblCar" />
+            <End Role="tblUserCar" EntitySet="tblUserCar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserCar_tblUser" Association="Self.FK_tblUserCar_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblUserCar" EntitySet="tblUserCar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserGift_tblGift" Association="Self.FK_tblUserGift_tblGift">
+            <End Role="tblGift" EntitySet="tblGift" />
+            <End Role="tblUserGift" EntitySet="tblUserGift" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserGift_tblGiftSendWay" Association="Self.FK_tblUserGift_tblGiftSendWay">
+            <End Role="tblGiftSendWay" EntitySet="tblGiftSendWay" />
+            <End Role="tblUserGift" EntitySet="tblUserGift" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserGift_tblUser" Association="Self.FK_tblUserGift_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblUserGift" EntitySet="tblUserGift" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserGift_tblUserGiftState" Association="Self.FK_tblUserGift_tblUserGiftState">
+            <End Role="tblUserGiftState" EntitySet="tblUserGiftState" />
+            <End Role="tblUserGift" EntitySet="tblUserGift" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserRegisterProduct_tblProductsSerial" Association="Self.FK_tblUserRegisterProduct_tblProductsSerial">
+            <End Role="tblProductsSerial" EntitySet="tblProductsSerial" />
+            <End Role="tblUserRegisterProduct" EntitySet="tblUserRegisterProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserRegisterProduct_tblUser" Association="Self.FK_tblUserRegisterProduct_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblUserRegisterProduct" EntitySet="tblUserRegisterProduct" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BAVAR_JHB_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblAboutUs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdParent" Type="Int32" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblAdmin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblAppVersion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VersionCode" Type="Int32" />
+          <Property Name="VersionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReleaseDate" Type="DateTime" Precision="3" />
+          <Property Name="Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblCar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdParent" Type="Int64" />
+          <Property Name="IdSort" Type="Int64" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+          <NavigationProperty Name="tblCarProduct" Relationship="Self.FK_tblCarProduct_tblCar" FromRole="tblCar" ToRole="tblCarProduct" />
+          <NavigationProperty Name="tblUserCar" Relationship="Self.FK_tblUserCar_tblCar" FromRole="tblCar" ToRole="tblUserCar" />
+        </EntityType>
+        <EntityType Name="tblCarProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCar" Type="Int64" />
+          <Property Name="IdProduct" Type="Int64" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+          <NavigationProperty Name="tblCar" Relationship="Self.FK_tblCarProduct_tblCar" FromRole="tblCarProduct" ToRole="tblCar" />
+          <NavigationProperty Name="tblProduct" Relationship="Self.FK_tblCarProduct_tblProduct" FromRole="tblCarProduct" ToRole="tblProduct" />
+        </EntityType>
+        <EntityType Name="tblCity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdParent" Type="Int64" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblUser_tblCity" FromRole="tblCity" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblCustomer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblGift">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProduct" Type="Int64" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MinPoint" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdSort" Type="Int64" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+          <NavigationProperty Name="tblProduct" Relationship="Self.FK_tblGift_tblProduct" FromRole="tblGift" ToRole="tblProduct" />
+          <NavigationProperty Name="tblUserGift" Relationship="Self.FK_tblUserGift_tblGift" FromRole="tblGift" ToRole="tblUserGift" />
+        </EntityType>
+        <EntityType Name="tblGiftSendWay">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdSort" Type="Int64" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+          <NavigationProperty Name="tblUserGift" Relationship="Self.FK_tblUserGift_tblGiftSendWay" FromRole="tblGiftSendWay" ToRole="tblUserGift" />
+        </EntityType>
+        <EntityType Name="tblHonors_Lincenses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="IdSort" Type="Int64" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAdmin" Type="Int64" />
+          <Property Name="Operation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="C_Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblNotification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdProduct" Type="Int64" />
+          <Property Name="Recievers" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int64" />
+          <Property Name="IdOrderState" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateStateEditing" Type="DateTime" Precision="3" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+          <NavigationProperty Name="tblOrderState" Relationship="Self.FK_tblOrder_tblOrderState" FromRole="tblOrder" ToRole="tblOrderState" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblOrder_tblUser" FromRole="tblOrder" ToRole="tblUser" />
+          <NavigationProperty Name="tblOrderDetail" Relationship="Self.FK_tblOrderDetail_tblOrder" FromRole="tblOrder" ToRole="tblOrderDetail" />
+        </EntityType>
+        <EntityType Name="tblOrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdOrder" Type="Int64" />
+          <Property Name="IdProduct" Type="Int64" />
+          <Property Name="Count" Type="Int64" />
+          <Property Name="Price" Type="Int64" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+          <NavigationProperty Name="tblOrder" Relationship="Self.FK_tblOrderDetail_tblOrder" FromRole="tblOrderDetail" ToRole="tblOrder" />
+          <NavigationProperty Name="tblProduct" Relationship="Self.FK_tblOrderDetail_tblProduct" FromRole="tblOrderDetail" ToRole="tblProduct" />
+        </EntityType>
+        <EntityType Name="tblOrderState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblOrder" Relationship="Self.FK_tblOrder_tblOrderState" FromRole="tblOrderState" ToRole="tblOrder" />
+        </EntityType>
+        <EntityType Name="tblProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdParent" Type="Int64" />
+          <Property Name="StateGroupProduct" Type="Boolean" />
+          <Property Name="IdSortGroup" Type="Int64" />
+          <Property Name="IdSortProduct" Type="Int64" />
+          <Property Name="StateExist" Type="Boolean" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+          <NavigationProperty Name="tblCarProduct" Relationship="Self.FK_tblCarProduct_tblProduct" FromRole="tblProduct" ToRole="tblCarProduct" />
+          <NavigationProperty Name="tblGift" Relationship="Self.FK_tblGift_tblProduct" FromRole="tblProduct" ToRole="tblGift" />
+          <NavigationProperty Name="tblOrderDetail" Relationship="Self.FK_tblOrderDetail_tblProduct" FromRole="tblProduct" ToRole="tblOrderDetail" />
+          <NavigationProperty Name="tblProductProperty" Relationship="Self.FK_tblProductProperty_tblProduct" FromRole="tblProduct" ToRole="tblProductProperty" />
+          <NavigationProperty Name="tblProductsSerial" Relationship="Self.FK_tblProductsSerial_tblProduct" FromRole="tblProduct" ToRole="tblProductsSerial" />
+          <NavigationProperty Name="tblProductSuggestion" Relationship="Self.FK_tblProductSuggestion_tblProduct" FromRole="tblProduct" ToRole="tblProductSuggestion" />
+          <NavigationProperty Name="tblRelativeProduct" Relationship="Self.FK_tblRelativeProduct_tblProduct" FromRole="tblProduct" ToRole="tblRelativeProduct" />
+          <NavigationProperty Name="tblRelativeProduct1" Relationship="Self.FK_tblRelativeProduct_tblProduct1" FromRole="tblProduct" ToRole="tblRelativeProduct" />
+        </EntityType>
+        <EntityType Name="tblProductImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdProduct" Type="Int64" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblProductProperty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProduct" Type="Int64" />
+          <Property Name="IdProperty" Type="Int64" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdSort" Type="Int64" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+          <NavigationProperty Name="tblProduct" Relationship="Self.FK_tblProductProperty_tblProduct" FromRole="tblProductProperty" ToRole="tblProduct" />
+          <NavigationProperty Name="tblProperty" Relationship="Self.FK_tblProductProperty_tblProperty" FromRole="tblProductProperty" ToRole="tblProperty" />
+        </EntityType>
+        <EntityType Name="tblProductsSerial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProduct" Type="Int64" />
+          <Property Name="Serial" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateProduce" Type="DateTime" Precision="3" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+          <NavigationProperty Name="tblProduct" Relationship="Self.FK_tblProductsSerial_tblProduct" FromRole="tblProductsSerial" ToRole="tblProduct" />
+          <NavigationProperty Name="tblUserRegisterProduct" Relationship="Self.FK_tblUserRegisterProduct_tblProductsSerial" FromRole="tblProductsSerial" ToRole="tblUserRegisterProduct" />
+        </EntityType>
+        <EntityType Name="tblProductSuggestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProduct" Type="Int64" />
+          <Property Name="IdSort" Type="Int64" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+          <NavigationProperty Name="tblProduct" Relationship="Self.FK_tblProductSuggestion_tblProduct" FromRole="tblProductSuggestion" ToRole="tblProduct" />
+        </EntityType>
+        <EntityType Name="tblProperty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdUserTypePermision" Type="Int64" Nullable="false" />
+          <Property Name="DeletePermision" Type="Boolean" />
+          <Property Name="IdParent" Type="Int64" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+          <NavigationProperty Name="tblProductProperty" Relationship="Self.FK_tblProductProperty_tblProperty" FromRole="tblProperty" ToRole="tblProductProperty" />
+        </EntityType>
+        <EntityType Name="tblRelativeProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProduct_Master" Type="Int64" />
+          <Property Name="IdProduct_Slave" Type="Int64" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+          <NavigationProperty Name="tblProduct" Relationship="Self.FK_tblRelativeProduct_tblProduct" FromRole="tblRelativeProduct" ToRole="tblProduct" />
+          <NavigationProperty Name="tblProduct1" Relationship="Self.FK_tblRelativeProduct_tblProduct1" FromRole="tblRelativeProduct" ToRole="tblProduct" />
+        </EntityType>
+        <EntityType Name="tblSerialInputLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int64" />
+          <Property Name="Serial" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdProductsSerial" Type="Int64" />
+          <Property Name="State" Type="Int32" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblSlideShow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdSort" Type="Int64" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblSmsLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="C_Date" Type="DateTime" Precision="3" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblSuggestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int64" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="QuestionText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateQuestionText" Type="DateTime" Precision="3" />
+          <Property Name="AnswerText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateAnswerText" Type="DateTime" Precision="3" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdState" Type="Int32" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+          <NavigationProperty Name="tblSuggestionState" Relationship="Self.FK_tblSuggestion_tblSuggestionState" FromRole="tblSuggestion" ToRole="tblSuggestionState" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblSuggestion_tblUser" FromRole="tblSuggestion" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblSuggestionState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblSuggestion" Relationship="Self.FK_tblSuggestion_tblSuggestionState" FromRole="tblSuggestionState" ToRole="tblSuggestion" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeMelli" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdCity" Type="Int64" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tell" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateBirthday" Type="DateTime" Precision="3" />
+          <Property Name="Sex" Type="Boolean" />
+          <Property Name="Married" Type="Boolean" />
+          <Property Name="JobName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Home" Type="Boolean" />
+          <Property Name="IdUserType" Type="Int64" />
+          <Property Name="StateRegister" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AccountCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CodePostal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fathername" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LatLon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AgentCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AgentRate" Type="Double" />
+          <Property Name="AgentLicenseImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Agent_History" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Agent_Place_Area" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Agent_BankAcouuntNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Agent_Lisence" Type="Boolean" />
+          <Property Name="Agent_JobType" Type="Boolean" />
+          <Property Name="Agent_Malek" Type="Boolean" />
+          <Property Name="Agent_PosState" Type="Boolean" />
+          <Property Name="Agent_IdType" Type="Int32" />
+          <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+          <NavigationProperty Name="tblCity" Relationship="Self.FK_tblUser_tblCity" FromRole="tblUser" ToRole="tblCity" />
+          <NavigationProperty Name="tblOrder" Relationship="Self.FK_tblOrder_tblUser" FromRole="tblUser" ToRole="tblOrder" />
+          <NavigationProperty Name="tblSuggestion" Relationship="Self.FK_tblSuggestion_tblUser" FromRole="tblUser" ToRole="tblSuggestion" />
+          <NavigationProperty Name="tblUserType" Relationship="Self.FK_tblUser_tblUserType" FromRole="tblUser" ToRole="tblUserType" />
+          <NavigationProperty Name="tblUserCar" Relationship="Self.FK_tblUserCar_tblUser" FromRole="tblUser" ToRole="tblUserCar" />
+          <NavigationProperty Name="tblUserGift" Relationship="Self.FK_tblUserGift_tblUser" FromRole="tblUser" ToRole="tblUserGift" />
+          <NavigationProperty Name="tblUserRegisterProduct" Relationship="Self.FK_tblUserRegisterProduct_tblUser" FromRole="tblUser" ToRole="tblUserRegisterProduct" />
+        </EntityType>
+        <EntityType Name="tblUserCar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCar" Type="Int64" />
+          <Property Name="IdUser" Type="Int64" Nullable="false" />
+          <Property Name="Pelak" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Kilometer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProduceYear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+          <NavigationProperty Name="tblCar" Relationship="Self.FK_tblUserCar_tblCar" FromRole="tblUserCar" ToRole="tblCar" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblUserCar_tblUser" FromRole="tblUserCar" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblUserGift">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdGift" Type="Int64" />
+          <Property Name="IdUser" Type="Int64" />
+          <Property Name="MinPoint" Type="Int32" />
+          <Property Name="IdGiftSendWay" Type="Int64" />
+          <Property Name="IdAgent_User" Type="Int64" />
+          <Property Name="IdUserGiftState" Type="Int32" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+          <NavigationProperty Name="tblGift" Relationship="Self.FK_tblUserGift_tblGift" FromRole="tblUserGift" ToRole="tblGift" />
+          <NavigationProperty Name="tblGiftSendWay" Relationship="Self.FK_tblUserGift_tblGiftSendWay" FromRole="tblUserGift" ToRole="tblGiftSendWay" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblUserGift_tblUser" FromRole="tblUserGift" ToRole="tblUser" />
+          <NavigationProperty Name="tblUserGiftState" Relationship="Self.FK_tblUserGift_tblUserGiftState" FromRole="tblUserGift" ToRole="tblUserGiftState" />
+        </EntityType>
+        <EntityType Name="tblUserGiftState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblUserGift" Relationship="Self.FK_tblUserGift_tblUserGiftState" FromRole="tblUserGiftState" ToRole="tblUserGift" />
+        </EntityType>
+        <EntityType Name="tblUserRegisterProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProductSerial" Type="Int64" />
+          <Property Name="IdUser" Type="Int64" />
+          <Property Name="DateRegister" Type="DateTime" Precision="3" />
+          <Property Name="Point" Type="Int32" />
+          <Property Name="StateBreakDown" Type="Boolean" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+          <NavigationProperty Name="tblProductsSerial" Relationship="Self.FK_tblUserRegisterProduct_tblProductsSerial" FromRole="tblUserRegisterProduct" ToRole="tblProductsSerial" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblUserRegisterProduct_tblUser" FromRole="tblUserRegisterProduct" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblUserType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Insert" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Insert" Type="Int64" />
+          <Property Name="Date_Update" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Update" Type="Int64" />
+          <Property Name="Date_Delete" Type="DateTime" Precision="3" />
+          <Property Name="IdUser_Delete" Type="Int64" />
+          <Property Name="StateDelete" Type="Boolean" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblUser_tblUserType" FromRole="tblUserType" ToRole="tblUser" />
+        </EntityType>
+        <Association Name="FK_tblCarProduct_tblCar">
+          <End Role="tblCar" Type="Self.tblCar" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblCarProduct" Type="Self.tblCarProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblCarProduct">
+              <PropertyRef Name="IdCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserCar_tblCar">
+          <End Role="tblCar" Type="Self.tblCar" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserCar" Type="Self.tblUserCar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserCar">
+              <PropertyRef Name="IdCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCarProduct_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblCarProduct" Type="Self.tblCarProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblCarProduct">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUser_tblCity">
+          <End Role="tblCity" Type="Self.tblCity" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblGift_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblGift" Type="Self.tblGift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblGift">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserGift_tblGift">
+          <End Role="tblGift" Type="Self.tblGift" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserGift" Type="Self.tblUserGift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGift">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserGift">
+              <PropertyRef Name="IdGift" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserGift_tblGiftSendWay">
+          <End Role="tblGiftSendWay" Type="Self.tblGiftSendWay" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserGift" Type="Self.tblUserGift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGiftSendWay">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserGift">
+              <PropertyRef Name="IdGiftSendWay" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrder_tblOrderState">
+          <End Role="tblOrderState" Type="Self.tblOrderState" Multiplicity="0..1" />
+          <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrderState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblOrder">
+              <PropertyRef Name="IdOrderState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrder_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblOrder">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrderDetail_tblOrder">
+          <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblOrderDetail" Type="Self.tblOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblOrderDetail">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrderDetail_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblOrderDetail" Type="Self.tblOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblOrderDetail">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductProperty_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProductProperty" Type="Self.tblProductProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProductProperty">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductsSerial_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProductsSerial" Type="Self.tblProductsSerial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProductsSerial">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductSuggestion_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProductSuggestion" Type="Self.tblProductSuggestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProductSuggestion">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRelativeProduct_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblRelativeProduct" Type="Self.tblRelativeProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblRelativeProduct">
+              <PropertyRef Name="IdProduct_Slave" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRelativeProduct_tblProduct1">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1" />
+          <End Role="tblRelativeProduct" Type="Self.tblRelativeProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblRelativeProduct">
+              <PropertyRef Name="IdProduct_Master" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductProperty_tblProperty">
+          <End Role="tblProperty" Type="Self.tblProperty" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProductProperty" Type="Self.tblProductProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProperty">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblProductProperty">
+              <PropertyRef Name="IdProperty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserRegisterProduct_tblProductsSerial">
+          <End Role="tblProductsSerial" Type="Self.tblProductsSerial" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserRegisterProduct" Type="Self.tblUserRegisterProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProductsSerial">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserRegisterProduct">
+              <PropertyRef Name="IdProductSerial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSuggestion_tblSuggestionState">
+          <End Role="tblSuggestionState" Type="Self.tblSuggestionState" Multiplicity="0..1" />
+          <End Role="tblSuggestion" Type="Self.tblSuggestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSuggestionState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblSuggestion">
+              <PropertyRef Name="IdState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSuggestion_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblSuggestion" Type="Self.tblSuggestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblSuggestion">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUser_tblUserType">
+          <End Role="tblUserType" Type="Self.tblUserType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="IdUserType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserCar_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserCar" Type="Self.tblUserCar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserCar">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserGift_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserGift" Type="Self.tblUserGift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserGift">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserRegisterProduct_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUserRegisterProduct" Type="Self.tblUserRegisterProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserRegisterProduct">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserGift_tblUserGiftState">
+          <End Role="tblUserGiftState" Type="Self.tblUserGiftState" Multiplicity="0..1" />
+          <End Role="tblUserGift" Type="Self.tblUserGift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserGiftState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserGift">
+              <PropertyRef Name="IdUserGiftState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BAVAR_JHB_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tblAboutUs" EntityType="Self.tblAboutUs" />
+          <EntitySet Name="tblAdmin" EntityType="Self.tblAdmin" />
+          <EntitySet Name="tblAppVersion" EntityType="Self.tblAppVersion" />
+          <EntitySet Name="tblCar" EntityType="Self.tblCar" />
+          <EntitySet Name="tblCarProduct" EntityType="Self.tblCarProduct" />
+          <EntitySet Name="tblCity" EntityType="Self.tblCity" />
+          <EntitySet Name="tblCustomer" EntityType="Self.tblCustomer" />
+          <EntitySet Name="tblGift" EntityType="Self.tblGift" />
+          <EntitySet Name="tblGiftSendWay" EntityType="Self.tblGiftSendWay" />
+          <EntitySet Name="tblHonors_Lincenses" EntityType="Self.tblHonors_Lincenses" />
+          <EntitySet Name="tblLog" EntityType="Self.tblLog" />
+          <EntitySet Name="tblNotification" EntityType="Self.tblNotification" />
+          <EntitySet Name="tblOrder" EntityType="Self.tblOrder" />
+          <EntitySet Name="tblOrderDetail" EntityType="Self.tblOrderDetail" />
+          <EntitySet Name="tblOrderState" EntityType="Self.tblOrderState" />
+          <EntitySet Name="tblProduct" EntityType="Self.tblProduct" />
+          <EntitySet Name="tblProductImage" EntityType="Self.tblProductImage" />
+          <EntitySet Name="tblProductProperty" EntityType="Self.tblProductProperty" />
+          <EntitySet Name="tblProductsSerial" EntityType="Self.tblProductsSerial" />
+          <EntitySet Name="tblProductSuggestion" EntityType="Self.tblProductSuggestion" />
+          <EntitySet Name="tblProperty" EntityType="Self.tblProperty" />
+          <EntitySet Name="tblRelativeProduct" EntityType="Self.tblRelativeProduct" />
+          <EntitySet Name="tblSerialInputLog" EntityType="Self.tblSerialInputLog" />
+          <EntitySet Name="tblService" EntityType="Self.tblService" />
+          <EntitySet Name="tblSlideShow" EntityType="Self.tblSlideShow" />
+          <EntitySet Name="tblSmsLog" EntityType="Self.tblSmsLog" />
+          <EntitySet Name="tblSuggestion" EntityType="Self.tblSuggestion" />
+          <EntitySet Name="tblSuggestionState" EntityType="Self.tblSuggestionState" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" />
+          <EntitySet Name="tblUserCar" EntityType="Self.tblUserCar" />
+          <EntitySet Name="tblUserGift" EntityType="Self.tblUserGift" />
+          <EntitySet Name="tblUserGiftState" EntityType="Self.tblUserGiftState" />
+          <EntitySet Name="tblUserRegisterProduct" EntityType="Self.tblUserRegisterProduct" />
+          <EntitySet Name="tblUserType" EntityType="Self.tblUserType" />
+          <AssociationSet Name="FK_tblCarProduct_tblCar" Association="Self.FK_tblCarProduct_tblCar">
+            <End Role="tblCar" EntitySet="tblCar" />
+            <End Role="tblCarProduct" EntitySet="tblCarProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserCar_tblCar" Association="Self.FK_tblUserCar_tblCar">
+            <End Role="tblCar" EntitySet="tblCar" />
+            <End Role="tblUserCar" EntitySet="tblUserCar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCarProduct_tblProduct" Association="Self.FK_tblCarProduct_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblCarProduct" EntitySet="tblCarProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUser_tblCity" Association="Self.FK_tblUser_tblCity">
+            <End Role="tblCity" EntitySet="tblCity" />
+            <End Role="tblUser" EntitySet="tblUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblGift_tblProduct" Association="Self.FK_tblGift_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblGift" EntitySet="tblGift" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserGift_tblGift" Association="Self.FK_tblUserGift_tblGift">
+            <End Role="tblGift" EntitySet="tblGift" />
+            <End Role="tblUserGift" EntitySet="tblUserGift" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserGift_tblGiftSendWay" Association="Self.FK_tblUserGift_tblGiftSendWay">
+            <End Role="tblGiftSendWay" EntitySet="tblGiftSendWay" />
+            <End Role="tblUserGift" EntitySet="tblUserGift" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrder_tblOrderState" Association="Self.FK_tblOrder_tblOrderState">
+            <End Role="tblOrderState" EntitySet="tblOrderState" />
+            <End Role="tblOrder" EntitySet="tblOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrder_tblUser" Association="Self.FK_tblOrder_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblOrder" EntitySet="tblOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrderDetail_tblOrder" Association="Self.FK_tblOrderDetail_tblOrder">
+            <End Role="tblOrder" EntitySet="tblOrder" />
+            <End Role="tblOrderDetail" EntitySet="tblOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrderDetail_tblProduct" Association="Self.FK_tblOrderDetail_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblOrderDetail" EntitySet="tblOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductProperty_tblProduct" Association="Self.FK_tblProductProperty_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblProductProperty" EntitySet="tblProductProperty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductsSerial_tblProduct" Association="Self.FK_tblProductsSerial_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblProductsSerial" EntitySet="tblProductsSerial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductSuggestion_tblProduct" Association="Self.FK_tblProductSuggestion_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblProductSuggestion" EntitySet="tblProductSuggestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRelativeProduct_tblProduct" Association="Self.FK_tblRelativeProduct_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblRelativeProduct" EntitySet="tblRelativeProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRelativeProduct_tblProduct1" Association="Self.FK_tblRelativeProduct_tblProduct1">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblRelativeProduct" EntitySet="tblRelativeProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductProperty_tblProperty" Association="Self.FK_tblProductProperty_tblProperty">
+            <End Role="tblProperty" EntitySet="tblProperty" />
+            <End Role="tblProductProperty" EntitySet="tblProductProperty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserRegisterProduct_tblProductsSerial" Association="Self.FK_tblUserRegisterProduct_tblProductsSerial">
+            <End Role="tblProductsSerial" EntitySet="tblProductsSerial" />
+            <End Role="tblUserRegisterProduct" EntitySet="tblUserRegisterProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSuggestion_tblSuggestionState" Association="Self.FK_tblSuggestion_tblSuggestionState">
+            <End Role="tblSuggestionState" EntitySet="tblSuggestionState" />
+            <End Role="tblSuggestion" EntitySet="tblSuggestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSuggestion_tblUser" Association="Self.FK_tblSuggestion_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblSuggestion" EntitySet="tblSuggestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUser_tblUserType" Association="Self.FK_tblUser_tblUserType">
+            <End Role="tblUserType" EntitySet="tblUserType" />
+            <End Role="tblUser" EntitySet="tblUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserCar_tblUser" Association="Self.FK_tblUserCar_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblUserCar" EntitySet="tblUserCar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserGift_tblUser" Association="Self.FK_tblUserGift_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblUserGift" EntitySet="tblUserGift" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserRegisterProduct_tblUser" Association="Self.FK_tblUserRegisterProduct_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblUserRegisterProduct" EntitySet="tblUserRegisterProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserGift_tblUserGiftState" Association="Self.FK_tblUserGift_tblUserGiftState">
+            <End Role="tblUserGiftState" EntitySet="tblUserGiftState" />
+            <End Role="tblUserGift" EntitySet="tblUserGift" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BAVAR_JHB_DBModelStoreContainer" CdmEntityContainer="BAVAR_JHB_DBEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAboutUs">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblAboutUs">
+              <MappingFragment StoreEntitySet="tblAboutUs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAdmin">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblAdmin">
+              <MappingFragment StoreEntitySet="tblAdmin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAppVersion">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblAppVersion">
+              <MappingFragment StoreEntitySet="tblAppVersion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VersionCode" ColumnName="VersionCode" />
+                <ScalarProperty Name="VersionName" ColumnName="VersionName" />
+                <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCar">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblCar">
+              <MappingFragment StoreEntitySet="tblCar">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="IdSort" ColumnName="IdSort" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCarProduct">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblCarProduct">
+              <MappingFragment StoreEntitySet="tblCarProduct">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdCar" ColumnName="IdCar" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCity">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblCity">
+              <MappingFragment StoreEntitySet="tblCity">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCustomer">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblCustomer">
+              <MappingFragment StoreEntitySet="tblCustomer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblGift">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblGift">
+              <MappingFragment StoreEntitySet="tblGift">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MinPoint" ColumnName="MinPoint" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="IdSort" ColumnName="IdSort" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblGiftSendWay">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblGiftSendWay">
+              <MappingFragment StoreEntitySet="tblGiftSendWay">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdSort" ColumnName="IdSort" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHonors_Lincenses">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblHonors_Lincenses">
+              <MappingFragment StoreEntitySet="tblHonors&amp;Lincenses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="IdSort" ColumnName="IdSort" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLog">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblLog">
+              <MappingFragment StoreEntitySet="tblLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdAdmin" ColumnName="IdAdmin" />
+                <ScalarProperty Name="Operation" ColumnName="Operation" />
+                <ScalarProperty Name="C_Date" ColumnName="_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblNotification">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblNotification">
+              <MappingFragment StoreEntitySet="tblNotification">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="Recievers" ColumnName="Recievers" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrder">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblOrder">
+              <MappingFragment StoreEntitySet="tblOrder">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdOrderState" ColumnName="IdOrderState" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateStateEditing" ColumnName="DateStateEditing" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrderDetail">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblOrderDetail">
+              <MappingFragment StoreEntitySet="tblOrderDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrderState">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblOrderState">
+              <MappingFragment StoreEntitySet="tblOrderState">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProduct">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblProduct">
+              <MappingFragment StoreEntitySet="tblProduct">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="StateGroupProduct" ColumnName="StateGroupProduct" />
+                <ScalarProperty Name="IdSortGroup" ColumnName="IdSortGroup" />
+                <ScalarProperty Name="IdSortProduct" ColumnName="IdSortProduct" />
+                <ScalarProperty Name="StateExist" ColumnName="StateExist" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductImage">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblProductImage">
+              <MappingFragment StoreEntitySet="tblProductImage">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductProperty">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblProductProperty">
+              <MappingFragment StoreEntitySet="tblProductProperty">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="IdProperty" ColumnName="IdProperty" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="IdSort" ColumnName="IdSort" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductsSerial">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblProductsSerial">
+              <MappingFragment StoreEntitySet="tblProductsSerial">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="DateProduce" ColumnName="DateProduce" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductSuggestion">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblProductSuggestion">
+              <MappingFragment StoreEntitySet="tblProductSuggestion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="IdSort" ColumnName="IdSort" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProperty">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblProperty">
+              <MappingFragment StoreEntitySet="tblProperty">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdUserTypePermision" ColumnName="IdUserTypePermision" />
+                <ScalarProperty Name="DeletePermision" ColumnName="DeletePermision" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRelativeProduct">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblRelativeProduct">
+              <MappingFragment StoreEntitySet="tblRelativeProduct">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdProduct_Master" ColumnName="IdProduct_Master" />
+                <ScalarProperty Name="IdProduct_Slave" ColumnName="IdProduct_Slave" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSerialInputLog">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblSerialInputLog">
+              <MappingFragment StoreEntitySet="tblSerialInputLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="IdProductsSerial" ColumnName="IdProductsSerial" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblService">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblService">
+              <MappingFragment StoreEntitySet="tblService">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSlideShow">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblSlideShow">
+              <MappingFragment StoreEntitySet="tblSlideShow">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="IdSort" ColumnName="IdSort" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSmsLog">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblSmsLog">
+              <MappingFragment StoreEntitySet="tblSmsLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="C_Date" ColumnName="_Date" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSuggestion">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblSuggestion">
+              <MappingFragment StoreEntitySet="tblSuggestion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+                <ScalarProperty Name="DateQuestionText" ColumnName="DateQuestionText" />
+                <ScalarProperty Name="AnswerText" ColumnName="AnswerText" />
+                <ScalarProperty Name="DateAnswerText" ColumnName="DateAnswerText" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="IdState" ColumnName="IdState" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSuggestionState">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblSuggestionState">
+              <MappingFragment StoreEntitySet="tblSuggestionState">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUser">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CodeMelli" ColumnName="CodeMelli" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Tell" ColumnName="Tell" />
+                <ScalarProperty Name="DateBirthday" ColumnName="DateBirthday" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Married" ColumnName="Married" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="Home" ColumnName="Home" />
+                <ScalarProperty Name="IdUserType" ColumnName="IdUserType" />
+                <ScalarProperty Name="StateRegister" ColumnName="StateRegister" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="AccountCode" ColumnName="AccountCode" />
+                <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+                <ScalarProperty Name="Fathername" ColumnName="Fathername" />
+                <ScalarProperty Name="LatLon" ColumnName="LatLon" />
+                <ScalarProperty Name="AgentCode" ColumnName="AgentCode" />
+                <ScalarProperty Name="AgentRate" ColumnName="AgentRate" />
+                <ScalarProperty Name="AgentLicenseImage" ColumnName="AgentLicenseImage" />
+                <ScalarProperty Name="Agent_History" ColumnName="Agent_History" />
+                <ScalarProperty Name="Agent_Place_Area" ColumnName="Agent_Place_Area" />
+                <ScalarProperty Name="Agent_BankAcouuntNumber" ColumnName="Agent_BankAcouuntNumber" />
+                <ScalarProperty Name="Agent_Lisence" ColumnName="Agent_Lisence" />
+                <ScalarProperty Name="Agent_JobType" ColumnName="Agent_JobType" />
+                <ScalarProperty Name="Agent_Malek" ColumnName="Agent_Malek" />
+                <ScalarProperty Name="Agent_PosState" ColumnName="Agent_PosState" />
+                <ScalarProperty Name="Agent_IdType" ColumnName="Agent_IdType" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserCar">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblUserCar">
+              <MappingFragment StoreEntitySet="tblUserCar">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdCar" ColumnName="IdCar" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Pelak" ColumnName="Pelak" />
+                <ScalarProperty Name="Kilometer" ColumnName="Kilometer" />
+                <ScalarProperty Name="ProduceYear" ColumnName="ProduceYear" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserGift">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblUserGift">
+              <MappingFragment StoreEntitySet="tblUserGift">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdGift" ColumnName="IdGift" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="MinPoint" ColumnName="MinPoint" />
+                <ScalarProperty Name="IdGiftSendWay" ColumnName="IdGiftSendWay" />
+                <ScalarProperty Name="IdAgent_User" ColumnName="IdAgent_User" />
+                <ScalarProperty Name="IdUserGiftState" ColumnName="IdUserGiftState" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserGiftState">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblUserGiftState">
+              <MappingFragment StoreEntitySet="tblUserGiftState">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserRegisterProduct">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblUserRegisterProduct">
+              <MappingFragment StoreEntitySet="tblUserRegisterProduct">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdProductSerial" ColumnName="IdProductSerial" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="DateRegister" ColumnName="DateRegister" />
+                <ScalarProperty Name="Point" ColumnName="Point" />
+                <ScalarProperty Name="StateBreakDown" ColumnName="StateBreakDown" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserType">
+            <EntityTypeMapping TypeName="BAVAR_JHB_DBModel.tblUserType">
+              <MappingFragment StoreEntitySet="tblUserType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Date_Insert" ColumnName="Date_Insert" />
+                <ScalarProperty Name="IdUser_Insert" ColumnName="IdUser_Insert" />
+                <ScalarProperty Name="Date_Update" ColumnName="Date_Update" />
+                <ScalarProperty Name="IdUser_Update" ColumnName="IdUser_Update" />
+                <ScalarProperty Name="Date_Delete" ColumnName="Date_Delete" />
+                <ScalarProperty Name="IdUser_Delete" ColumnName="IdUser_Delete" />
+                <ScalarProperty Name="StateDelete" ColumnName="StateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

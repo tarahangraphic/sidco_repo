@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "خودروهای مرتبط با محصول";
+    Layout = "~/Views/shared/_layout.cshtml";
+}
+<script>
+    window.onload = load;
+    function load() {
+        ShowGrid();
+        ShowCarlist();
+    }
+    function ShowCarlist() {
+        var _listcar = JSON.parse('@Html.Raw(ViewBag.listcar)');
+        var str = "";
+        for (var i in _listcar) {
+            str += '<option value="' + _listcar[i].Id + '">' + _listcar[i].Display + '</option>';
+        }
+        IdCarList.innerHTML = str;
+    }
+    function ShowGrid() {
+        var _listcarproduct = JSON.parse('@Html.Raw(ViewBag.listCarproduct)');
+        _idproduct.value = _listcarproduct[0].IdProduct;
+        TitlePage.innerHTML = "نام محصول : " + _listcarproduct[0].ProductName;
+
+        DataTableCarProduct(_listcarproduct, [
+        { Data: "Id", Title: "Id" },
+        { Data: "Name", Title: "نام گروه خودرو" }], divCarProduct,
+        { RowNumber: true },
+   [{ Text: "حذف", Icon: "remove", class: "btn btn-danger", event: DeleteCarProduct }]);
+    }
+    function DeleteCarProduct(id) {
+        CarProductId.value = id;
+        deletecarproductform.submit();
+        $(deleteinformation).fadeIn();
+        $(deleteinformation).fadeOut(3000);
+
+    }
+    function FillCars() {
+
+        var id = $('#IdCarList').val();
+        $.ajax({
+            type: "Post",
+            url: "/CarProduct/FillCars",
+            dataType: 'json',
+            data: { id: id },
+            success: function (data) {
+                $('#IdCar').empty();
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                    $('#IdCar').append("<option value=" + data[i].Id + ">" + data[i].Display + "</option>");
+                }
+            }
+        });
+
+    }
+    function BtnRegisterCarProduct() {
+        RegisterCarProductForm.submit();
+        $(Successful).fadeIn();
+        $(Successful).fadeOut(3000);
+    }
+</script>
+<form id="deletecarproductform" action="/CarProduct/DeleteCarProduct" method="post">
+    <input id="CarProductId" type="hidden" name="id"/>
+</form>
+
+<div style="display:none;" id="Successful" class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true" style="font-size:20px">×</span>
+    </button>
+    <strong>موفق!</strong> عملیات با موفقیت انجام شد
+</div>
+<div style="display:none;" id="deleteinformation" class="alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true" style="font-size:20px">×</span>
+    </button>
+    <strong>حذف!</strong> حذف با موفقیت انجام شد
+</div>
+<a style="margin-bottom:10px;margin-bottom:10px;margin-right:10px;" href="~/Product/Index" class="btn btn-primary">بازگشت به صفحه محصولات</a>
+
+<div class="panel panel-default table-responsive">
+    <form style="margin-top:10px;" id="RegisterCarProductForm" action="/CarProduct/RegisterCarProduct" method="post">
+        <table>
+            <tr>
+                <td>
+                    <input type="hidden" id="_idproduct" name="IdProduct" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label style="margin-right:10px;" for="IdCarList">نام گروه خودرو:</label>
+                </td>
+                <td>
+                    <select style="margin-right:5px;" class="form-control" id="IdCarList" onchange="FillCars()"></select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label style="margin-top:10px;margin-right:10px;" for="IdCar">نام خودرو:</label>
+                </td>
+                <td>
+                    <select style="margin-top:10px;margin-right:5px;" class="form-control" id="IdCar" name="IdCar"></select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button style="margin-right:10px;" class="btn btn-primary" type="submit" onclick="BtnRegisterCarProduct()">ثبت جدید</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+
+
+
+<div class="panel-body">
+    <div class="row animatedParent animateOnce z-index-50">
+        <div class="col-lg-12 animated fadeInUp">
+            <h3 class="title">خودرو های مرتبط با محصول</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 animatedParent animateOnce z-index-50">
+            <div class="panel panel-default animated fadeInUp">
+                <div class="panel-heading clearfix">
+                    <h3 id="TitlePage"></h3>
+                </div>
+                <div class="panel-body">
+                    <div id="divCarProduct" class="table-responsive">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

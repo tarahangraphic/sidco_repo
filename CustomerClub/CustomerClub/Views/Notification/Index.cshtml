@@ -1,0 +1,369 @@
+﻿@model CustomerClub.NotificationUtility.mNotificationFilters
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/shared/_layout.cshtml";
+}
+@section viewsection{
+
+    <link href="@Url.Content("~/CalendarPersian/js-persian-cal.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/CalendarPersian/js-persian-cal.min.js")"></script>
+
+    <script type="text/javascript">
+        var objCal1 = new AMIB.persianCalendar('pcal1');
+    </script>
+
+    <script type='text/javascript'>
+        $(document).ready(function () {
+
+            $("#filter_user_type").hide();
+            $("#filter_sex").hide();
+            $("#filter_buy_products").hide();
+            $("#filter_car").hide();
+            $("#filter_birthday").hide();
+
+            $('input[name="filter_type"]').change(function () {
+                if ($(this).val() == "0") {
+                    $("#filter_user_type").hide();
+                    $("#filter_sex").hide();
+                    $("#filter_buy_products").hide();
+                    $("#filter_car").hide();
+                    $("#filter_birthday").hide();
+                }
+                else if ($(this).val() == "1") {
+                    $("#filter_user_type").show();
+                    $("#filter_sex").hide();
+                    $("#filter_buy_products").hide();
+                    $("#filter_car").hide();
+                    $("#filter_birthday").hide();
+                }
+                else if ($(this).val() == "2") {
+                    $("#filter_user_type").hide();
+                    $("#filter_sex").show();
+                    $("#filter_buy_products").hide();
+                    $("#filter_car").hide();
+                    $("#filter_birthday").hide();
+                }
+                else if ($(this).val() == "3") {
+                    $("#filter_user_type").hide();
+                    $("#filter_sex").hide();
+                    $("#filter_buy_products").show();
+                    $("#filter_car").hide();
+                    $("#filter_birthday").hide();
+                }
+                else if ($(this).val() == "4") {
+                    $("#filter_user_type").hide();
+                    $("#filter_sex").hide();
+                    $("#filter_buy_products").hide();
+                    $("#filter_car").show();
+                    $("#filter_birthday").hide();
+                }
+                else if ($(this).val() == "5") {
+                    $("#filter_user_type").hide();
+                    $("#filter_sex").hide();
+                    $("#filter_buy_products").hide();
+                    $("#filter_car").hide();
+                    $("#filter_birthday").show();
+                }
+            });
+        });
+    </script>
+
+    <link href="~/Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/FileUpload/jquery.fileupload.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/jquery.ui.widget.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/FileUpload/jquery.fileupload.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#fileupload').fileupload({
+                dataType: 'json',
+                url: '/Notification/UploadFiles',
+                autoUpload: true,
+                done: function (e, data) {
+                    $('.file_name').html(data.result.name);
+                    $('input[name="notify_image_url"]').val(data.result.name);
+                    $('.file_type').html(data.result.type);
+                    $('.file_size').html(data.result.size);
+                }
+            }).on('fileuploadprogressall', function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('.progress .progress-bar').css('width', progress + '%');
+            });
+        });
+    </script>
+
+    <script>
+        function FillUserType() {
+            $.ajax({
+                type: "Post",
+                url: "/Notification/ListUserType",
+                dataType: 'json',
+                success: function (data) {
+                    $('#filter_user_type_select').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#filter_user_type_select').append('<option value=' + data[i].Value + '>' + data[i].Text + '</option > ');
+                    }
+                }
+            });
+        }
+
+        function FillProduct_Group() {
+            $.ajax({
+                type: "Post",
+                url: "/Notification/ListProduct_Group",
+                dataType: 'json',
+                success: function (data) {
+                    $('#filter_buy_product_group_select').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#filter_buy_product_group_select').append('<option value=' + data[i].Value + '>' + data[i].Text + '</option > ');
+                    }
+                }
+            });
+        }
+
+        function FillProduct() {
+            var id = $('#filter_buy_product_group_select').val();
+            $.ajax({
+                type: "Post",
+                url: "/Notification/ListProduct",
+                dataType: 'json',
+                data: { id: id },
+                success: function (data) {
+                    $('#filter_buy_product_select').empty();
+                    console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                        $('#filter_buy_product_select').append("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                    }
+                }
+            });
+        }
+
+        function FillCar_Group() {
+            $.ajax({
+                type: "Post",
+                url: "/Notification/ListUserCar_Group",
+                dataType: 'json',
+                success: function (data) {
+                    $('#filter_user_car_group_select').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#filter_user_car_group_select').append('<option value=' + data[i].Value + '>' + data[i].Text + '</option > ');
+                    }
+                }
+            });
+        }
+
+        function FillCar() {
+            var id = $('#filter_user_car_group_select').val();
+            $.ajax({
+                type: "Post",
+                url: "/Notification/ListUserCar",
+                dataType: 'json',
+                data: { id: id },
+                success: function (data) {
+                    $('#filter_user_car_select').empty();
+                    console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                        $('#filter_user_car_select').append("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                    }
+                }
+            });
+        }
+
+        function FillProduct_Group2() {
+            $("#list_product_group_select").show();
+            $("#list_product_select").show();
+
+            $.ajax({
+                type: "Post",
+                url: "/Notification/ListProduct_Group2",
+                dataType: 'json',
+                success: function (data) {
+                    $('#list_product_group_select').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#list_product_group_select').append('<option value=' + data[i].Value + '>' + data[i].Text + '</option > ');
+                    }
+                }
+            });
+        }
+
+        function FillProduct2() {
+            var id = $('#list_product_group_select').val();
+            $.ajax({
+                type: "Post",
+                url: "/Notification/ListProduct2",
+                dataType: 'json',
+                data: { id: id },
+                success: function (data) {
+                    $('#list_product_select').empty();
+                    console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                        $('#list_product_select').append("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                    }
+                }
+            });
+        }
+
+        function FillProduct_Group_hide() {
+            $("#list_product_group_select").hide();
+            $("#list_product_select").hide();
+        }
+    </script>
+
+
+
+
+}
+
+@using (Html.BeginForm("Send", "Notification", "post"))
+{
+    <div class="panel-body">
+        <div class="row animatedParent animateOnce z-index-50">
+            <div class="col-lg-12 animated fadeInUp">
+                <h3 class="title">مدیریت ارسال پیام</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 animatedParent animateOnce z-index-50">
+                <div class="panel panel-default animated fadeInUp">
+                    <div class="panel-heading clearfix">
+                        <h3 class="panel-title">ارسال پیام بر اساس : </h3>
+                    </div>
+                    <div class="panel-body">
+                        <form>
+                            <div class="form-group">
+                                <div class="radio"> <label> <input type="radio" value="0" id="optionsradios1" name="filter_type" selected>همه</label> </div>
+                                <div class="radio"> <label> <input type="radio" value="1" id="optionsradios1" onclick="FillUserType()" name="filter_type">نوع کاربران</label> </div>
+                                <div class="radio"> <label> <input type="radio" value="2" id="optionsradios2" name="filter_type">جنسیت</label> </div>
+                                <div class="radio"> <label> <input type="radio" value="3" id="optionsradios3" onclick="FillProduct_Group()" name="filter_type">محصولات خریداری شده</label> </div>
+                                <div class="radio"> <label> <input type="radio" value="4" id="optionsradios4" onclick="FillCar_Group()" name="filter_type">خودرو</label> </div>
+                                <div class="radio"> <label> <input type="radio" value="5" id="optionsradios5" name="filter_type">تاریخ تولد</label> </div>
+                            </div>
+
+                            <div class="line-dashed"></div>
+
+                            <div class="form-group" id="filter_user_type">
+                                <select class="form-control" id="filter_user_type_select" name="filter_user_type" placeholder="نوع کاربران"></select>
+                            </div>
+                            <div id="filter_sex" class="form-group">
+                                <div class="radio"> <label> <input type="radio" value="true" name="filter_gender" checked>مرد</label> </div>
+                                <div class="radio"> <label> <input type="radio" value="false" name="filter_gender">زن</label> </div>
+                            </div>
+                            <div id="filter_buy_products" class="form-group">
+                                <select class="form-control" id="filter_buy_product_group_select" name="filter_buy_product_groups" onchange='FillProduct()' placeholder="گروه محصولات"></select>
+                                <select class="form-control" id="filter_buy_product_select" name="filter_buy_product" placeholder="محصول"></select>
+                            </div>
+                            <div id="filter_car" class="form-group">
+                                <select class="form-control" id="filter_user_car_group_select" name="filter_user_car_group" onchange="FillCar()" placeholder="123123"></select>
+                                <select class="form-control" id="filter_user_car_select" name="filter_user_car" placeholder="123123"></select>
+                            </div>
+                            <div id="filter_birthday" class="form-group">
+
+                                <input type="text" id="pcal1" name="filter_user_birthday" class="pdate">
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 animatedParent animateOnce z-index-50">
+                <div class="panel panel-default animated fadeInUp">
+                    <div class="panel-heading clearfix">
+                        <h3 class="panel-title">جزئیات پیام : </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="emailaddress">عنوان پیام 1 : </label>
+                            <input type="text" class="form-control" name="notify_title_1" id="txt_notify_title_1" placeholder="عنوان پیام 1">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">متن پیام 1</label>
+                            <input type="text" class="form-control" name="notify_text_1" id="txt_notify_text_1" placeholder="متن پیام 1">
+                        </div>
+                        <div class="form-group">
+                            <label for="emailaddress">عنوان پیام 2 : </label>
+                            <input type="text" class="form-control" name="notify_title_2" id="txt_notify_title_2" placeholder="عنوان پیام 2">
+                        </div>
+                        <div class="form-group">
+                            <label for="emailaddress">متن پیام 2 : </label>
+                            <input type="text" class="form-control" name="notify_text_2" id="txt_notify_text_2" placeholder="متن پیام 2">
+                        </div>
+
+                        <div id="list_car" class="form-group">
+                            <div class="radio"> <label> <input type="radio" value="0" id="opcheck_product1" onclick="FillProduct_Group_hide()" name="check_product" selected>بدون محصول</label> </div>
+                            <div class="radio"> <label> <input type="radio" value="1" id="opcheck_product2" onclick="FillProduct_Group2()" name="check_product">انتخاب محصول</label> </div>
+
+                            <select class="form-control" id="list_product_group_select" name="list_product_group_select" onchange="FillProduct2()" placeholder="123123"></select>
+                            <select class="form-control" id="list_product_select" name="IdProduct" placeholder="123123"></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="emailaddress">عکس پیام : </label>
+
+
+
+
+
+
+
+
+                            <span class="btn btn-success fileinput-button">
+                                <i class="glyphicon glyphicon-plus"></i>
+                                <span>Add files...</span>
+                                <input id="fileupload" type="file">
+                            </span>
+                            <br />
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                                    <span class="sr-only">0% complete</span>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="file_name"></div>
+                            <br />
+                            <div class="file_type"></div>
+                            <br />
+                            <div class="file_size"></div>
+                            <input type="hidden" id="notify_image" value="" name="notify_image_url" />
+
+
+
+
+
+
+
+
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                        @*<div>
+                            @if (@ViewBag.msg == "1")
+                            {
+                                <div id="Successful" class="alert alert-success">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true" style="font-size:20px">×</span>
+                                    </button>
+                                    <strong>موفق!</strong> عملیات با موفقیت انجام شد
+                                </div>
+                            }
+                            else if (@ViewBag.msg == "-1")
+                            {
+                                <div id="deleteinformation" class="alert alert-danger">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true" style="font-size:20px">×</span>
+                                    </button>
+                                    <strong>حذف!</strong> حذف با موفقیت انجام شد
+                                </div>
+                            }
+                        </div>*@
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

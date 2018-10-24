@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "مدیریت بخش اسلاید شو";
+    Layout = "~/Views/shared/_layout.cshtml";
+}
+@section viewsection{
+    
+<script src="~/Script/Pages/SlideShow.js"></script>
+}
+<div style="display:none;" id="Successful" class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true" style="font-size:20px">×</span>
+    </button>
+    <strong>موفق!</strong> عملیات با موفقیت انجام شد
+</div>
+
+<div style="display:none;" id="deleteinformation" class="alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true" style="font-size:20px">×</span>
+    </button>
+    <strong>حذف!</strong> حذف با موفقیت انجام شد
+</div>
+
+<div class="panel-body">
+    <div class="row animatedParent animateOnce z-index-50">
+        <div class="col-lg-12 animated fadeInUp">
+            <h3 class="title">مدیریت بخش اسلاید شو</h3>
+        </div>
+    </div>
+    <div id="SlideShowregister">
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12 animatedParent animateOnce z-index-50">
+            <div class="panel panel-default animated fadeInUp">
+                <div class="panel-heading clearfix">
+                    <h3></h3>
+                    <button style="margin-right:20px;margin-bottom:20px;" id="btnRegisterSlideShow" type="button" onclick="SlideShowregisterform.reset()" class="btn btn-primary" data-toggle="modal" data-target="#SlideShowregisterModal" data-backdrop="static">ثبت جدید</button>
+                </div>
+                <div class="panel-body">
+                    <div id="divSlideShow" class="table-responsive">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

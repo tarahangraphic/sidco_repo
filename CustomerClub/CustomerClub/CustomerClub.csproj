@@ -1,0 +1,782 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{98BF1DBD-FB1C-46DB-AA11-BE2EF206F18A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CustomerClub</RootNamespace>
+    <AssemblyName>CustomerClub</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\اطمینان تراز\ETMINANTARAZ_API\ETMINANTARAZ_WEB_API\ETMINANTARAZ_WEB_API\bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PersianDate, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\اطمینان تراز\ETMINANTARAZ_API\ETMINANTARAZ_WEB_API\ETMINANTARAZ_WEB_API\bin\PersianDate.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CalendarPersian\amib.png" />
+    <Content Include="CalendarPersian\js-persian-cal.css" />
+    <Content Include="CalendarPersian\js-persian-cal.min.js" />
+    <Content Include="CalendarPersian\jspc-gray.css" />
+    <Content Include="CalendarPersian\jspc-peach.css" />
+    <Content Include="CalendarPersian\jspc-royal_blue.css" />
+    <Content Include="CalendarPersian\main.css" />
+    <Content Include="CalendarPersian\pcal.png" />
+    <Content Include="css\animateColors.js" />
+    <Content Include="css\bootstrap-rtl.min.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\changeState.js" />
+    <Content Include="css\clear.js" />
+    <Content Include="css\colorDiff.js" />
+    <Content Include="css\entypo.css" />
+    <Content Include="css\eventPolyfill.js" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\getCurrentColors.js" />
+    <Content Include="css\getDimensions.js" />
+    <Content Include="css\getLightness.js" />
+    <Content Include="css\hexToRgb.js" />
+    <Content Include="css\makeGradient.js" />
+    <Content Include="css\mouldifi-core.css" />
+    <Content Include="css\mouldifi-forms.css" />
+    <Content Include="css\mouldifi-rtl-core.css" />
+    <Content Include="css\normalize.css" />
+    <Content Include="css\onResize.js" />
+    <Content Include="css\pause.js" />
+    <Content Include="css\pauseWhenNotInView.js" />
+    <Content Include="css\play.js" />
+    <Content Include="css\plugins\chartist\chartist.min.css" />
+    <Content Include="css\plugins\colorpicker\bootstrap-colorpicker.css" />
+    <Content Include="css\plugins\colorpicker\images\alpha-horizontal.png" />
+    <Content Include="css\plugins\colorpicker\images\alpha.png" />
+    <Content Include="css\plugins\colorpicker\images\hue-horizontal.png" />
+    <Content Include="css\plugins\colorpicker\images\hue.png" />
+    <Content Include="css\plugins\colorpicker\images\saturation.png" />
+    <Content Include="css\plugins\css3-animate-it-plugin\animations.css" />
+    <Content Include="css\plugins\datatables\jquery.dataTables.css" />
+    <Content Include="css\plugins\datepicker\bootstrap-datepicker.css" />
+    <Content Include="css\plugins\markdown\bootstrap-markdown.min.css" />
+    <Content Include="css\plugins\nouislider\nouislider.css" />
+    <Content Include="css\plugins\pdatepicker\css\datepicker-theme.css" />
+    <Content Include="css\plugins\pdatepicker\css\daterangepicker.css" />
+    <Content Include="css\plugins\pdatepicker\css\fonts\datepicker.svg" />
+    <Content Include="css\plugins\pdatepicker\js\daterangepicker-fa-ex.js" />
+    <Content Include="css\plugins\pdatepicker\js\daterangepicker-fa.js" />
+    <Content Include="css\plugins\pdatepicker\js\moment-jalaali.js" />
+    <Content Include="css\plugins\pdatepicker\js\moment.min.js" />
+    <Content Include="css\plugins\select2\select2.css" />
+    <Content Include="css\plugins\summernote\summernote.css" />
+    <Content Include="css\refreshColors.js" />
+    <Content Include="css\setColors.js" />
+    <Content Include="css\setDirection.js" />
+    <Content Include="css\style.css" />
+    <Content Include="css\vertical-responsive-menu.min.css" />
+    <Content Include="CustomerClub3.csproj" />
+    <Content Include="CustomerClub3.csproj.user" />
+    <Content Include="Files\aboutus.txt" />
+    <Content Include="FileUpload\jquery.fileupload.css" />
+    <Content Include="FileUpload\jquery.fileupload.js" />
+    <Content Include="fonts\datepicker.svg" />
+    <Content Include="fonts\entypo.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\Yekan.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="img\aboutus\1.jpg" />
+    <Content Include="img\aboutus\2.jpg" />
+    <Content Include="img\aboutus\3.jpg" />
+    <Content Include="img\aboutus\308171290slide2.jpg" />
+    <Content Include="img\aboutus\514254404slide2.jpg" />
+    <Content Include="img\aboutus\5774463891.jpg" />
+    <Content Include="img\aboutus\5823429259103580092.jpg" />
+    <Content Include="img\aboutus\6135379843.jpg" />
+    <Content Include="img\aboutus\8044308401.jpg" />
+    <Content Include="img\aboutus\9966678363.jpg" />
+    <Content Include="img\agentlicense\f.jpeg" />
+    <Content Include="img\agentlicense\j.jpeg" />
+    <Content Include="img\alarm.jpg" />
+    <Content Include="img\alex-dolgove.png" />
+    <Content Include="img\annual-book.jpg" />
+    <Content Include="img\arrow-up-icon.png" />
+    <Content Include="img\article-post-1.jpg" />
+    <Content Include="img\article-post.jpg" />
+    <Content Include="img\bar-chart-icon.png" />
+    <Content Include="img\basketball.jpg" />
+    <Content Include="img\blog-3.jpg" />
+    <Content Include="img\blog-6.jpg" />
+    <Content Include="img\camera.jpg" />
+    <Content Include="img\carpanter.jpg" />
+    <Content Include="img\chocolate.jpg" />
+    <Content Include="img\clock.jpg" />
+    <Content Include="img\customers\34767279slide2.jpg" />
+    <Content Include="img\customers\499676566annual-book.jpg" />
+    <Content Include="img\customers\784636561slide1.jpg" />
+    <Content Include="img\customers\slide1.jpg" />
+    <Content Include="img\customers\slide2.jpg" />
+    <Content Include="img\desserts.jpg" />
+    <Content Include="img\domnic-brown.png" />
+    <Content Include="img\favicon.ico" />
+    <Content Include="img\headphone.jpg" />
+    <Content Include="img\icon-close.png" />
+    <Content Include="img\imac-40.jpg" />
+    <Content Include="img\index.jpg" />
+    <Content Include="img\john-smith.png" />
+    <Content Include="img\like-icon.png" />
+    <Content Include="img\loading.gif" />
+    <Content Include="img\Loading.svg" />
+    <Content Include="img\logo.png" />
+    <Content Include="img\macbook-40.jpg" />
+    <Content Include="img\man-3.jpg" />
+    <Content Include="img\media-1.jpg" />
+    <Content Include="img\media-2.jpg" />
+    <Content Include="img\media-3.jpg" />
+    <Content Include="img\notify\1.jpg" />
+    <Content Include="img\notify\feather-pen-icon-logo-template_9999-6.jpg" />
+    <Content Include="img\notify\notify.jpg" />
+    <Content Include="img\notify\notify2.jpg" />
+    <Content Include="img\office-40.jpg" />
+    <Content Include="img\products\1.JPG" />
+    <Content Include="img\products\11.JPG" />
+    <Content Include="img\products\12.JPG" />
+    <Content Include="img\products\16.JPG" />
+    <Content Include="img\products\17.JPG" />
+    <Content Include="img\products\2.JPG" />
+    <Content Include="img\products\20.JPG" />
+    <Content Include="img\products\24.jpg" />
+    <Content Include="img\products\3.JPG" />
+    <Content Include="img\products\32.jpg" />
+    <Content Include="img\products\34.jpg" />
+    <Content Include="img\products\35.jpg" />
+    <Content Include="img\products\36.jpg" />
+    <Content Include="img\products\37.jpg" />
+    <Content Include="img\products\4.JPG" />
+    <Content Include="img\products\40.jpg" />
+    <Content Include="img\products\41 %281%29.jpg" />
+    <Content Include="img\products\41 %282%29.jpg" />
+    <Content Include="img\products\42.jpg" />
+    <Content Include="img\products\43.jpg" />
+    <Content Include="img\products\44.jpg" />
+    <Content Include="img\products\45.jpg" />
+    <Content Include="img\products\46.jpg" />
+    <Content Include="img\products\47.jpg" />
+    <Content Include="img\products\48.jpg" />
+    <Content Include="img\products\5.JPG" />
+    <Content Include="img\products\54.jpg" />
+    <Content Include="img\products\55.jpg" />
+    <Content Include="img\products\58.jpg" />
+    <Content Include="img\products\59.jpg" />
+    <Content Include="img\products\6.JPG" />
+    <Content Include="img\products\60.jpg" />
+    <Content Include="img\products\63.jpg" />
+    <Content Include="img\products\65.jpg" />
+    <Content Include="img\products\67.jpg" />
+    <Content Include="img\products\68.JPG" />
+    <Content Include="img\products\69.jpg" />
+    <Content Include="img\products\71.jpg" />
+    <Content Include="img\products\73.jpg" />
+    <Content Include="img\products\74.jpg" />
+    <Content Include="img\products\75.jpg" />
+    <Content Include="img\products\76.jpg" />
+    <Content Include="img\products\77.jpg" />
+    <Content Include="img\products\78.jpg" />
+    <Content Include="img\products\79.jpg" />
+    <Content Include="img\products\81-82.JPG" />
+    <Content Include="img\products\81.jpg" />
+    <Content Include="img\products\83-84.jpg" />
+    <Content Include="img\products\85-86-87-88-89.jpg" />
+    <Content Include="img\products\90.jpg" />
+    <Content Include="img\products\91.jpg" />
+    <Content Include="img\products\94.jpg" />
+    <Content Include="img\products\95.jpg" />
+    <Content Include="img\products\97.jpg" />
+    <Content Include="img\products\98.jpg" />
+    <Content Include="img\products\p200200010002.jpg" />
+    <Content Include="img\running-shoe.jpg" />
+    <Content Include="img\services\16109578754.jpg" />
+    <Content Include="img\services\34767279slide2.jpg" />
+    <Content Include="img\services\499676566annual-book.jpg" />
+    <Content Include="img\services\540790188headphone.jpg" />
+    <Content Include="img\services\55567413634.jpg" />
+    <Content Include="img\services\639776397alarm.jpg" />
+    <Content Include="img\services\657611665alarm.jpg" />
+    <Content Include="img\services\688268796camera.jpg" />
+    <Content Include="img\services\691795933.JPG" />
+    <Content Include="img\services\923938097index.jpg" />
+    <Content Include="img\services\slide2.jpg" />
+    <Content Include="img\slideshow\254906108carpanter.jpg" />
+    <Content Include="img\slideshow\30377198headphone.jpg" />
+    <Content Include="img\slideshow\364488349article-post-1.jpg" />
+    <Content Include="img\slideshow\380792629837662565slide1.jpg" />
+    <Content Include="img\slideshow\39347898slide2.jpg" />
+    <Content Include="img\slideshow\410011372bar-chart-icon.png" />
+    <Content Include="img\slideshow\440516964499676566annual-book.jpg" />
+    <Content Include="img\slideshow\468932902slide2.jpg" />
+    <Content Include="img\slideshow\52784770639347898slide2.jpg" />
+    <Content Include="img\slideshow\6581819239347898slide2.jpg" />
+    <Content Include="img\slideshow\73785080334767279slide2.jpg" />
+    <Content Include="img\slideshow\837662565slide1.jpg" />
+    <Content Include="img\slideshow\852083892basketball.jpg" />
+    <Content Include="img\slideshow\855174096blog-3.jpg" />
+    <Content Include="img\slideshow\928632379blog-6.jpg" />
+    <Content Include="img\slideshow\asdnflkasdkfasdf.jpg" />
+    <Content Include="img\slideshow\slide1.jpg" />
+    <Content Include="img\snooker.jpg" />
+    <Content Include="img\stella-johnson.png" />
+    <Content Include="js\angular.min.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\Common.js" />
+    <Content Include="js\functions.js" />
+    <Content Include="js\html5shiv.min.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\jquery.validate.min.js" />
+    <Content Include="js\morris\morris-script.js" />
+    <Content Include="js\morris\morris.min.js" />
+    <Content Include="js\morris\raphael-min.js" />
+    <Content Include="js\persianDatepicker.js" />
+    <Content Include="js\persianDatepicker.min.js" />
+    <Content Include="js\plugins\blockui-master\jquery-ui.js" />
+    <Content Include="js\plugins\blockui-master\jquery.blockUI.js" />
+    <Content Include="js\plugins\chartist\chartist-script.js" />
+    <Content Include="js\plugins\chartist\chartist.min.js" />
+    <Content Include="js\plugins\chartjs\Chart.min.js" />
+    <Content Include="js\plugins\chartjs\chartjs-script.js" />
+    <Content Include="js\plugins\colorpicker\bootstrap-colorpicker.min.js" />
+    <Content Include="js\plugins\css3-animate-it-plugin\css3-animate-it.js" />
+    <Content Include="js\plugins\datatables\dataTables.bootstrap.min.js" />
+    <Content Include="js\plugins\datatables\extensions\Buttons\css\buttons.dataTables.css" />
+    <Content Include="js\plugins\datatables\extensions\Buttons\js\buttons.colVis.js" />
+    <Content Include="js\plugins\datatables\extensions\Buttons\js\buttons.html5.js" />
+    <Content Include="js\plugins\datatables\extensions\Buttons\js\dataTables.buttons.min.js" />
+    <Content Include="js\plugins\datatables\jquery.dataTables.min.js" />
+    <Content Include="js\plugins\datatables\jszip.min.js" />
+    <Content Include="js\plugins\datatables\pdfmake.min.js" />
+    <Content Include="js\plugins\datatables\vfs_fonts.js" />
+    <Content Include="js\plugins\datepicker\bootstrap-datepicker.js" />
+    <Content Include="js\plugins\flot\excanvas.min.js" />
+    <Content Include="js\plugins\flot\flot-script.js" />
+    <Content Include="js\plugins\flot\jquery.flot.min.js" />
+    <Content Include="js\plugins\flot\jquery.flot.pie.min.js" />
+    <Content Include="js\plugins\flot\jquery.flot.resize.min.js" />
+    <Content Include="js\plugins\flot\jquery.flot.selection.min.js" />
+    <Content Include="js\plugins\flot\jquery.flot.time.min.js" />
+    <Content Include="js\plugins\flot\jquery.flot.tooltip.min.js" />
+    <Content Include="js\plugins\jasny\jasny-bootstrap.min.js" />
+    <Content Include="js\plugins\markdown\bootstrap-markdown.js" />
+    <Content Include="js\plugins\markdown\markdown.js" />
+    <Content Include="js\plugins\metismenu\jquery.metisMenu.js" />
+    <Content Include="js\plugins\nouislider\nouislider.min.js" />
+    <Content Include="js\plugins\select2\select2.full.min.js" />
+    <Content Include="js\plugins\summernote\summernote.min.js" />
+    <Content Include="js\prism.js" />
+    <Content Include="js\prism.min.js" />
+    <Content Include="js\respond.min.js" />
+    <Content Include="Models\CustomerClub.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CustomerClub.edmx</DependentUpon>
+      <LastGenOutput>CustomerClub.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\CustomerClub.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CustomerClub.edmx</DependentUpon>
+      <LastGenOutput>CustomerClub.cs</LastGenOutput>
+    </Content>
+    <Content Include="scripts\ai.0.22.9-build00167.js" />
+    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\CustomerClub.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CustomerClub.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\CustomerClub.edmx.diagram">
+      <DependentUpon>CustomerClub.edmx</DependentUpon>
+    </Content>
+    <None Include="scripts\jquery-1.9.0.intellisense.js" />
+    <Content Include="scripts\jquery-1.9.0.js" />
+    <Content Include="scripts\jquery-1.9.0.min.js" />
+    <Content Include="scripts\MdBootstrapPersianDateTimePicker\jalaali.js" />
+    <Content Include="scripts\MdBootstrapPersianDateTimePicker\jquery.Bootstrap-PersianDateTimePicker.js" />
+    <Content Include="scripts\npm.js" />
+    <Content Include="Script\ajaxsscrip.min.js" />
+    <Content Include="Script\Common.js" />
+    <Content Include="Script\DataTablePhoto\DataTableCustomer.js" />
+    <Content Include="Script\DataTablePhoto\DataTableGift.js" />
+    <Content Include="Script\DataTablePhoto\DataTableGroupAboutUs.js" />
+    <Content Include="Script\DataTablePhoto\DataTableProduct.js" />
+    <Content Include="Script\DataTablePhoto\DataTableServices.js" />
+    <Content Include="Script\DataTablePhoto\DataTableSlideShow.js" />
+    <Content Include="Script\DataTablePhoto\DataTableUser.js" />
+    <Content Include="Script\DataTablePhoto\DataTableUserGift.js" />
+    <Content Include="Script\DataTableProduct.js" />
+    <Content Include="Script\DataTable\DataTable.js" />
+    <Content Include="Script\DataTable\DataTableCar.js" />
+    <Content Include="Script\DataTable\DataTableCarProduct.js" />
+    <Content Include="Script\DataTable\DataTableforAboutUs.js" />
+    <Content Include="Script\DataTable\DataTableOrder.js" />
+    <Content Include="Script\DataTable\DataTableOrderDetail.js" />
+    <Content Include="Script\DataTable\DataTableProductPropety.js" />
+    <Content Include="Script\DataTable\DataTableProductSerial.js" />
+    <Content Include="Script\DataTable\DataTableProductSuggestion.js" />
+    <Content Include="Script\DataTable\DataTableProperty.js" />
+    <Content Include="Script\DataTable\DataTableRelativProduct.js" />
+    <Content Include="Script\DataTable\DataTableSuggestion.js" />
+    <Content Include="Script\DataTable\DataTableUserCar.js" />
+    <Content Include="Script\DataTable\DataTableUserRegisterProduct.js" />
+    <Content Include="Script\DataTable\DataTableUserReqInPageUser.js" />
+    <Content Include="Script\DataTable\DataTableUserRequest.js" />
+    <Content Include="Script\fillselect.js" />
+    <Content Include="Script\filltag.js" />
+    <Content Include="Script\jquery.blockUI.js" />
+    <Content Include="Script\modals\modalAboutUs.js" />
+    <Content Include="Script\modals\modalCarList.js" />
+    <Content Include="Script\modals\modalCarProduct.js" />
+    <Content Include="Script\modals\modalCars.js" />
+    <Content Include="Script\modals\modalCustomer.js" />
+    <Content Include="Script\modals\modalGift.js" />
+    <Content Include="Script\modals\modalListAboutUs.js" />
+    <Content Include="Script\modals\modalListproduct.js" />
+    <Content Include="Script\modals\modalOrderDetail.js" />
+    <Content Include="Script\modals\modalProduct.js" />
+    <Content Include="Script\modals\modalProductSerial.js" />
+    <Content Include="Script\modals\modalProductSuggestion.js" />
+    <Content Include="Script\modals\modalProperty.js" />
+    <Content Include="Script\modals\modalServices.js" />
+    <Content Include="Script\modals\modalSlideShow.js" />
+    <Content Include="Script\modals\modalSuggestion.js" />
+    <Content Include="Script\modals\modalUser.js" />
+    <Content Include="Script\modals\modalUserCar.js" />
+    <Content Include="Script\modals\modalUserDetail.js" />
+    <Content Include="Script\modals\modaluserGift.js" />
+    <Content Include="Script\modals\modalUserRegisterProduct.js" />
+    <Content Include="Script\model\AboutUs.js" />
+    <Content Include="Script\model\AppVersion.js" />
+    <Content Include="Script\model\Car.js" />
+    <Content Include="Script\model\CarProduct.js" />
+    <Content Include="Script\model\Customer.js" />
+    <Content Include="Script\model\Gift.js" />
+    <Content Include="Script\model\OrderDetail.js" />
+    <Content Include="Script\model\Product.js" />
+    <Content Include="Script\model\ProductSerial.js" />
+    <Content Include="Script\model\ProductSuggestion.js" />
+    <Content Include="Script\model\Property.js" />
+    <Content Include="Script\model\Services.js" />
+    <Content Include="Script\model\SlideShow.js" />
+    <Content Include="Script\model\Suggestion.js" />
+    <Content Include="Script\model\User.js" />
+    <Content Include="Script\model\UserCar.js" />
+    <Content Include="Script\model\UserRegisterProduct.js" />
+    <Content Include="Script\Pages\AboutUs.js" />
+    <Content Include="Script\Pages\AppVersion.js" />
+    <Content Include="Script\Pages\Cars.js" />
+    <Content Include="Script\Pages\Customer.js" />
+    <Content Include="Script\Pages\Gift.js" />
+    <Content Include="Script\Pages\Notification.js" />
+    <Content Include="Script\Pages\Orders.js" />
+    <Content Include="Script\Pages\Product.js" />
+    <Content Include="Script\Pages\ProductSerial.js" />
+    <Content Include="Script\Pages\ProductSuggestion.js" />
+    <Content Include="Script\Pages\Property.js" />
+    <Content Include="Script\Pages\Services.js" />
+    <Content Include="Script\Pages\SlideShow.js" />
+    <Content Include="Script\Pages\Statistic_Count.js" />
+    <Content Include="Script\Pages\Suggestion.js" />
+    <Content Include="Script\Pages\User.js" />
+    <Content Include="Script\Pages\UserRegisterProduct.js" />
+    <Content Include="Script\Pages\UserReq.js" />
+    <Content Include="Script\validitycheck.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AboutUsController.cs" />
+    <Compile Include="Controllers\AppVersionController.cs" />
+    <Compile Include="Controllers\CarController.cs" />
+    <Compile Include="Controllers\CarProductController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\GiftController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductPropertyController.cs" />
+    <Compile Include="Controllers\ProductsSerialController.cs" />
+    <Compile Include="Controllers\ProductSuggestionController.cs" />
+    <Compile Include="Controllers\PropertyController.cs" />
+    <Compile Include="Controllers\RelativProductController.cs" />
+    <Compile Include="Controllers\ServicesController.cs" />
+    <Compile Include="Controllers\ShowUserRequestController.cs" />
+    <Compile Include="Controllers\SlideShowController.cs" />
+    <Compile Include="Controllers\SuggestionController.cs" />
+    <Compile Include="Controllers\UserCarController.cs" />
+    <Compile Include="Controllers\UserGiftController.cs" />
+    <Compile Include="Controllers\UserRegisterProductController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomerClub.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerClub.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomerClub.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomerClub.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerClub.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\mItemSelect.cs" />
+    <Compile Include="Models\mProperty.cs" />
+    <Compile Include="Models\mPropertySelected.cs" />
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblAboutUs.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblAdmin.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblAppVersion.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblCar.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblCarProduct.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblCity.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblCustomer.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblGift.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblGiftSendWay.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblHonors_Lincenses.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblLog.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblNotification.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblOrder.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblOrderDetail.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblOrderState.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProduct.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProductImage.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProductProperty.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProductsSerial.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProductSuggestion.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProperty.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblRelativeProduct.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSerialInputLog.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblService.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSlideShow.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSmsLog.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSuggestion.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSuggestionState.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblUser.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblUserCar.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblUserGift.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblUserGiftState.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblUserRegisterProduct.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblUserType.cs">
+      <DependentUpon>CustomerClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationUtility\clsData.cs" />
+    <Compile Include="NotificationUtility\clsFcm.cs" />
+    <Compile Include="NotificationUtility\clsMessage.cs" />
+    <Compile Include="NotificationUtility\clsNotification.cs" />
+    <Compile Include="NotificationUtility\clsPusher.cs" />
+    <Compile Include="NotificationUtility\clsResult.cs" />
+    <Compile Include="NotificationUtility\clsSetting.cs" />
+    <Compile Include="NotificationUtility\mNotificationFilters.cs" />
+    <Compile Include="NotificationUtility\mUploadFilesResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\clsPersianDate.cs" />
+    <Compile Include="Utility\ExtensionFunction.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="css\plugins\pdatepicker\css\fonts\datepicker.eot" />
+    <Content Include="css\plugins\pdatepicker\css\fonts\datepicker.ttf" />
+    <Content Include="css\plugins\pdatepicker\css\fonts\datepicker.woff" />
+    <Content Include="css\plugins\summernote\font\summernote.eot" />
+    <Content Include="css\plugins\summernote\font\summernote.eot%40" />
+    <Content Include="css\plugins\summernote\font\summernote.ttf" />
+    <Content Include="css\plugins\summernote\font\summernote.woff" />
+    <Content Include="fonts\datepicker.eot" />
+    <Content Include="fonts\datepicker.ttf" />
+    <Content Include="fonts\datepicker.woff" />
+    <Content Include="fonts\entypo.eot" />
+    <Content Include="fonts\entypo.eot%40" />
+    <Content Include="fonts\entypo.ttf" />
+    <Content Include="fonts\entypo.woff" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.eot%40" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot%40" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\Samim-Bold-FD.eot" />
+    <Content Include="fonts\Samim-Bold-FD.ttf" />
+    <Content Include="fonts\Samim-Bold-FD.woff" />
+    <Content Include="fonts\Samim-Bold-FD.woff2" />
+    <Content Include="fonts\Samim-FD.eot" />
+    <Content Include="fonts\Samim-FD.ttf" />
+    <Content Include="fonts\Samim-FD.woff" />
+    <Content Include="fonts\Samim-FD.woff2" />
+    <Content Include="fonts\summernote.eot" />
+    <Content Include="fonts\summernote.eot%40" />
+    <Content Include="fonts\summernote.ttf" />
+    <Content Include="fonts\summernote.woff" />
+    <Content Include="fonts\Yekan.eot" />
+    <Content Include="fonts\Yekan.ttf" />
+    <Content Include="fonts\Yekan.woff" />
+    <Content Include="Views\AboutUs\Index.cshtml" />
+    <Content Include="Views\AppVersion\Index.cshtml" />
+    <Content Include="Views\CarProduct\Index.cshtml" />
+    <Content Include="Views\Car\Index.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Gift\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Notification\Index.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\ProductProperty\Index.cshtml" />
+    <Content Include="Views\ProductsSerial\Index.cshtml" />
+    <Content Include="Views\ProductSuggestion\Index.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Property\Index.cshtml" />
+    <Content Include="Views\RelativProduct\Index.cshtml" />
+    <Content Include="Views\Services\Index.cshtml" />
+    <Content Include="Views\shared\_layout.cshtml" />
+    <Content Include="Views\ShowUserRequest\Index.cshtml" />
+    <Content Include="Views\SlideShow\Index.cshtml" />
+    <Content Include="Views\Suggestion\Index.cshtml" />
+    <Content Include="Views\UserCar\Index.cshtml" />
+    <Content Include="Views\UserGift\Index.cshtml" />
+    <Content Include="Views\UserRegisterProduct\Index.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\web.config" />
+    <Content Include="scripts\jquery-1.9.0.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>7735</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:7735/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

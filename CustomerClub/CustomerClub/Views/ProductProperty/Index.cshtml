@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "مدیریت ویژگی های محصولات";
+    Layout = "~/Views/shared/_layout.cshtml";
+}
+<script>
+    var product = [];
+    var _listItemProperty = [];
+    window.onload = load;
+    var _listProductPropertyes = [];
+    function load() {
+        Showpropname();
+        showGridItemProperty();
+
+    }
+    function showGridItemProperty() {
+        var _ItemProperty = JSON.parse('@Html.Raw(ViewBag.ItemProperty)');
+        _listItemProperty = _ItemProperty;
+        DataTableProductProperty(_ItemProperty,
+            [{ Data: "Id", Title: "Id" },
+                { Data: "Checked", Title: "انتخاب ویژگی" },
+                { Data: "IdParent", Title: "IdParent" },
+                { Data: "Name", Title: "نام ویژگی" },
+                { Data: "Value", Title: "مقدار ویژگی" },
+                { Data: "DeletePermission", Title: "DeletePermission" }],
+            divProductProperty,
+            { RowNumber: true });
+    }
+    function Showpropname() {
+        var _product = JSON.parse('@Html.Raw(ViewBag.product)');
+        product = _product;
+        _ProductName.innerHTML = "نام محصول : " + product[0].ProductName;
+    }
+    function FindeIdCheck() {
+        SelectedProp = {};
+        ListProps = [];
+        var _empty = false;
+        $(':checkbox:checked').each(function (i) {
+
+            var Id = $(this).val();
+            var Value = $('#txt' + Id).val();
+
+            if ($('#txt' + Id).val() == '') {
+                $(ErrorInformation).show();
+                _empty = true;
+            }
+            item = {};
+            item["Id"] = Id;
+            item["Value"] = Value;
+            ListProps.push(item);
+        });
+        SelectedProp["IdProduct"] = product[0].Id;
+        SelectedProp["ListProps"] = ListProps;
+
+        if (_empty == false) {
+            $.ajax({
+                type: "Post",
+                url: "/ProductProperty/RegisterProps",
+                dataType: 'json',
+                data: SelectedProp,
+                success: function (data) {
+                    $(Successful).fadeIn();
+                    $(Successful2).fadeIn();
+                    $(Successful).fadeOut(5000);
+                    $(Successful2).fadeOut(5000);
+
+                }
+            });
+        }
+    }
+</script>
+<div style="display:none;" id="Successful" class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true" style="font-size:20px">×</span>
+    </button>
+    <strong>موفق!</strong> عملیات با موفقیت انجام شد
+</div>
+<a style="margin-bottom:10px;margin-bottom:10px;margin-right:10px;" href="~/Product/Index" class="btn btn-primary">بازگشت به صفحه محصولات</a>
+
+<div class="panel-heading clearfix">
+    <h3>@ViewBag.Title</h3>
+</div>
+<div class="row">
+    <div class="col-lg-12 animatedParent animateOnce z-index-50">
+        <div class="panel panel-default animated fadeInUp">
+            <div class="panel-heading clearfix">
+                <h2 id="_ProductName" name="ProductName"></h2>
+            </div>
+            <div class="panel-body">
+                <div class="row animatedParent animateOnce z-index-50">
+                    <div class="col-lg-12 animated fadeInUp">
+                        <div id="divProductProperty" class="table-responsive">
+
+                        </div>
+                        <button class="btn btn-default" onclick="FindeIdCheck()">ثبت</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display:none;" id="Successful2" class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true" style="font-size:20px">×</span>
+    </button>
+    <strong>موفق!</strong> عملیات با موفقیت انجام شد
+</div>
+<div style="display:none;" id="ErrorInformation" class="alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true" style="font-size:20px">×</span>
+    </button>
+    <strong>خطا!</strong> لطفا مقدار سطرهایی که انتخاب کرده اید را وارد کنید
+</div>

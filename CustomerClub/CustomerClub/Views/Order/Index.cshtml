@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "مدیریت سفارشتات";
+    Layout = "~/Views/shared/_layout.cshtml";
+}
+
+@section viewsection{
+    
+<script src="~/Script/Pages/Orders.js"></script>
+    }
+<h2>@ViewBag.Title</h2>
+<div style="display:none;" id="Successful" class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true" style="font-size:20px">×</span>
+    </button>
+    <strong>موفق!</strong> عملیات با موفقیت انجام شد
+</div>
+
+<div style="display:none;" id="deleteinformation" class="alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true" style="font-size:20px">×</span>
+    </button>
+    <strong>حذف!</strong> حذف با موفقیت انجام شد
+</div>
+
+<div style="display:none;" id="NoInformation" class="alert alert-warning">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true" style="font-size:20px">×</span>
+    </button>
+    <strong>توجه!</strong> اطلاعاتی موجود نیست
+</div>
+
+<button style="margin-bottom:10px;display:none;" id="btnreturn" class="btn btn-primary"><span class="icon-reply"></span><span> بازگشت </span></button>
+
+<button style="display:none;margin-right:20px;margin-bottom:20px;" id="btnRegisterOrderDetail" type="button" onclick="RegisterOrderDetailform.reset()" class="btn btn-primary" data-toggle="modal" data-target="#RegisterOrderDetailModal" data-backdrop="static"></button>
+<div id="RegisterOrderDetail">
+
+</div>
+<div class="row-border">
+    <div class="panel panel-default">
+        <div class="panel panel-body">
+            <div id="divOrder" class="table-responsive">
+
+            </div>
+            <div id="divOrderDetail" class="table-responsive">
+
+            </div>
+        </div>
+    </div>
+</div>

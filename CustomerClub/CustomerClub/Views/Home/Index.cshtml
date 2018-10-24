@@ -1,0 +1,684 @@
+﻿
+@{
+    ViewBag.Title = "صفحه اصلی مدیریت باشگاه مشتریان";
+    Layout = "~/Views/shared/_layout.cshtml";
+}
+@section viewsection{
+    @*<script src="~/Script/Pages/Statistic_Count.js"></script>*@
+    <style>
+        .c1 {
+            stroke: white;
+            fill: #03A9F4;
+            background-color: #03A9F4;
+        }
+
+        .c2 {
+            stroke: white;
+            fill: #8BC34A;
+            background-color: #8BC34A;
+        }
+
+        .c3 {
+            stroke: white;
+            fill: #607D8B;
+            background-color: #607D8B;
+        }
+
+        .c4 {
+            stroke: white;
+            fill: #9C27B0;
+            background-color: #9C27B0;
+        }
+
+        .c5 {
+            stroke: white;
+            fill: #795548;
+            background-color: #795548;
+        }
+    </style>
+
+    <script>
+
+        $(document).ready(function () {
+            console.log("test");
+            $.ajax({
+                type: "Post",
+                url: "/Home/Stats",
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+
+                    NewOrders.innerHTML = data.StatsCount[0];
+                    BreakDownProducts.innerHTML = data.StatsCount[1];
+                    Suggestions.innerHTML = data.StatsCount[2];
+                    AgentRequests.innerHTML = data.StatsCount[3];
+                    InstallApps.innerHTML = data.StatsCount[4];
+                    GiftRequests.innerHTML = data.StatsCount[5];
+                    EnabledWarranty.innerHTML = data.StatsCount[6];
+
+                    ///////////////////////////////////////////////////////////////////
+                    stats_users_all.innerHTML = data.StatsUser[0];
+                    stats_users_female.innerHTML = data.StatsUser[1];
+                    stats_users_male.innerHTML = data.StatsUser[2];
+                    stats_users_type_customer.innerHTML = data.StatsUser[3];
+                    stats_users_type_mechanic.innerHTML = data.StatsUser[4];
+                    stats_users_type_agent.innerHTML = data.StatsUser[5];
+                    stats_users_agent_request.innerHTML = data.StatsUser[6];
+
+                    var sum1 = data.StatsUser[3] + data.StatsUser[4] + data.StatsUser[5];
+                    var c1data = {
+                        series: [
+                            { value: data.StatsUser[3], className: 'c1' },
+                            { value: data.StatsUser[4], className: 'c2' },
+                            { value: data.StatsUser[5], className: 'c3' }
+                        ]
+                    };
+                    var pieChart1 = new Chartist.Pie('#ct-chart_user', c1data, {
+                        labelInterpolationFnc: function (value) {
+                            var per1 = value / sum1 * 100;
+                            return Math.round(per1 * 10) / 10 + '%';
+                        }
+                    });
+                    ///////////////////////////////////////////////////////////////////
+                    console.log(data.StatsOrder);
+                    stats_orders_all.innerHTML = data.StatsOrder[0];
+                    stats_orders_type_1.innerHTML = data.StatsOrder[1];
+                    stats_orders_type_2.innerHTML = data.StatsOrder[2];
+                    stats_orders_type_3.innerHTML = data.StatsOrder[3];
+
+                    var sum2 = data.StatsOrder[1] + data.StatsOrder[2] + data.StatsOrder[3];
+                    var c2data = {
+                        series: [
+                            { value: data.StatsOrder[1], className: 'c1' },
+                            { value: data.StatsOrder[2], className: 'c2' },
+                            { value: data.StatsOrder[3], className: 'c3' }
+                        ]
+                    };
+                    var pieChart2 = new Chartist.Pie('#ct-chart_order', c2data, {
+                        labelInterpolationFnc: function (value) {
+                            var per2 = value / sum2 * 100;
+                            return Math.round(per2 * 10) / 10 + '%';
+                        }
+                    });
+                    ///////////////////////////////////////////////////////////////////
+                    console.log(data.StatsClub);
+                    stats_club_all.innerHTML = data.StatsClub[0];
+                    stats_club_type_1.innerHTML = data.StatsClub[1];
+                    stats_club_type_2.innerHTML = data.StatsClub[2];
+                    stats_club_type_3.innerHTML = data.StatsClub[3];
+                    stats_club_type_4.innerHTML = data.StatsClub[4];
+
+                    var sum3 = data.StatsClub[1] + data.StatsClub[2] + data.StatsClub[3] + data.StatsClub[4];
+                    var c3data = {
+                        series: [
+                            { value: data.StatsClub[1], className: 'c1' },
+                            { value: data.StatsClub[2], className: 'c2' },
+                            { value: data.StatsClub[3], className: 'c3' },
+                            { value: data.StatsClub[4], className: 'c4' }
+                        ]
+                    };
+                    var pieChart3 = new Chartist.Pie('#ct-chart_club', c3data, {
+                        labelInterpolationFnc: function (value) {
+                            var per3 = value / sum3 * 100;
+                            return Math.round(per3 * 10) / 10 + '%';
+                        }
+                    });
+                    ///////////////////////////////////////////////////////////////////
+                    console.log(data.StatsProductVerify);
+                    stats_product_verify_all.innerHTML = data.StatsProductVerify[0];
+                    stats_product_verify_state_1.innerHTML = data.StatsProductVerify[1];
+                    stats_product_verify_state_0.innerHTML = data.StatsProductVerify[2];
+                    stats_product_verify_breakdown.innerHTML = data.StatsProductVerify[3];
+
+                    var sum4 = data.StatsProductVerify[1] + data.StatsProductVerify[2];
+                    var c4data = {
+                        series: [
+                            { value: data.StatsProductVerify[1], className: 'c1' },
+                            { value: data.StatsProductVerify[2], className: 'c2' }
+                        ]
+                    };
+                    var pieChart4 = new Chartist.Pie('#ct-chart_product_verify', c4data, {
+                        labelInterpolationFnc: function (value) {
+                            var per4 = value / sum4 * 100;
+                            return Math.round(per4 * 10) / 10 + '%';
+                        }
+                    });
+                    ///////////////////////////////////////////////////////////////////
+                    console.log(data.StatsSuggestion);
+                    stats_suggestion_all.innerHTML = data.StatsSuggestion[0];
+                    stats_suggestion_state_1.innerHTML = data.StatsSuggestion[1];
+                    stats_suggestion_state_2.innerHTML = data.StatsSuggestion[2];
+                    stats_suggestion_state_3.innerHTML = data.StatsSuggestion[3];
+
+                    var sum5 = data.StatsSuggestion[1] + data.StatsSuggestion[2] + data.StatsSuggestion[3];
+                    var c5data = {
+                        series: [
+                            { value: data.StatsSuggestion[1], className: 'c1' },
+                            { value: data.StatsSuggestion[2], className: 'c2' },
+                            { value: data.StatsSuggestion[3], className: 'c3' }
+                        ]
+                    };
+                    var pieChart5 = new Chartist.Pie('#ct-chart_suggestion', c5data, {
+                        labelInterpolationFnc: function (value) {
+                            var per5 = value / sum5 * 100;
+                            return Math.round(per5 * 10) / 10 + '%';
+                        }
+                    });
+                    ///////////////////////////////////////////////////////////////////
+                    console.log(data.StatsNotify);
+                    stats_notify_all.innerHTML = data.StatsNotify[0];
+                    stats_notify_public.innerHTML = data.StatsNotify[1];
+                    stats_notify_private.innerHTML = data.StatsNotify[2];
+
+                    var sum6 = data.StatsNotify[1] + data.StatsNotify[2];
+                    var c6data = {
+                        series: [
+                            { value: data.StatsNotify[1], className: 'c1' },
+                            { value: data.StatsNotify[2], className: 'c2' }
+                        ]
+                    };
+                    var pieChart6 = new Chartist.Pie('#ct-chart_notify', c6data, {
+                        labelInterpolationFnc: function (value) {
+                            var per6 = value / sum6 * 100;
+                            return Math.round(per6 * 10) / 10 + '%';
+                        }
+                    });
+                    ///////////////////////////////////////////////////////////////////
+                }
+            });
+        });
+
+    </script>
+
+}
+<ol class="breadcrumb breadcrumb-2">
+    <li><a href="index.html"><i class="fa fa-home"></i> خانه</a></li>
+    <li><a href="simple-view.html">لیست ویو</a></li>
+    <li class="active"><strong>Users</strong></li>
+</ol>
+<h1 class="page-title"> داشبورد</h1>
+`
+<div class="row">
+    <div class="col-lg-12">
+        <div class="col-md-3 animatedParent animateOnce z-index-48">
+            <div class="panel minimal panel-default animated fadeInUp go">
+                <div class="panel-heading clearfix">
+                    <div class="panel-title">سفارشات جدید</div>
+
+                </div>
+                <div class="panel-body">
+                    <div class="stack-order">
+                        <h1 id="NewOrders" class="no-margins">0</h1>
+
+                    </div>
+                    <div class="bar-chart-icon"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 animatedParent animateOnce z-index-48">
+            <div class="panel minimal panel-default animated fadeInUp go">
+                <div class="panel-heading clearfix">
+                    <div class="panel-title">کالاهای معیوب</div>
+
+                </div>
+                <div class="panel-body">
+                    <div class="stack-order">
+                        <h1 id="BreakDownProducts" class="no-margins">0</h1>
+
+                    </div>
+                    <div class="bar-chart-icon"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 animatedParent animateOnce z-index-48">
+            <div class="panel minimal panel-default animated fadeInUp go">
+                <div class="panel-heading clearfix">
+                    <div class="panel-title">پیشنهادات وانتقادات</div>
+
+                </div>
+                <div class="panel-body">
+                    <div class="stack-order">
+                        <h1 id="Suggestions" class="no-margins">0</h1>
+
+                    </div>
+                    <div class="bar-chart-icon"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 animatedParent animateOnce z-index-48">
+            <div class="panel minimal panel-default animated fadeInUp go">
+                <div class="panel-heading clearfix">
+                    <div class="panel-title">درخواست نمایندگی</div>
+
+                </div>
+                <div class="panel-body">
+                    <div class="stack-order">
+                        <h1 id="AgentRequests" class="no-margins">0</h1>
+
+                    </div>
+                    <div class="bar-chart-icon"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="col-md-3 animatedParent animateOnce z-index-48">
+            <div class="panel minimal panel-default animated fadeInUp go">
+                <div class="panel-heading clearfix">
+                    <div class="panel-title"> تعداد اپلیکیشن های نصب شده</div>
+
+                </div>
+                <div class="panel-body">
+                    <div class="stack-order">
+                        <h1 id="InstallApps" class="no-margins">0</h1>
+
+                    </div>
+                    <div class="bar-chart-icon"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 animatedParent animateOnce z-index-48">
+            <div class="panel minimal panel-default animated fadeInUp go">
+                <div class="panel-heading clearfix">
+                    <div class="panel-title">درخواست هدیه</div>
+
+                </div>
+                <div class="panel-body">
+                    <div class="stack-order">
+                        <h1 id="GiftRequests" class="no-margins">0</h1>
+
+                    </div>
+                    <div class="bar-chart-icon"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 animatedParent animateOnce z-index-48">
+            <div class="panel minimal panel-default animated fadeInUp go">
+                <div class="panel-heading clearfix">
+                    <div class="panel-title">گارانتی های فعال شده</div>
+
+                </div>
+                <div class="panel-body">
+                    <div class="stack-order">
+                        <h1 id="EnabledWarranty" class="no-margins">0</h1>
+
+                    </div>
+                    <div class="bar-chart-icon"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 animatedParent animateOnce z-index-46">
+        <div class="panel panel-default animated fadeInUp go">
+            <div class="panel-heading clearfix">
+                <div class="panel-title">کاربران</div>
+                <a class="icon-user"></a>
+            </div>
+            <div class="panel-body">
+                <div class="col-xs-5">
+                    <table class="table-responsive">
+                        <tbody>
+                            <tr>
+                                <td class="icon-users"></td>
+                                <td class="legendLabel">تعدادکل کاربران:</td>
+                                <td class="legendLabel" id="stats_users_all"></td>
+                            </tr>
+                            <tr>
+                                <td class="icon-users"></td>
+                                <td class="legendLabel">تعداد کاربران زن:</td>
+                                <td class="legendLabel" id="stats_users_female"></td>
+                            </tr>
+                            <tr>
+                                <td class="icon-users"></td>
+                                <td class="legendLabel">تعداد کاربران مرد:</td>
+                                <td class="legendLabel" id="stats_users_male"></td>
+                            </tr>
+                            <tr>
+                                <td class="icon-users"></td>
+                                <td class="legendLabel">تعداد مشتری :</td>
+                                <td class="legendLabel" id="stats_users_type_customer"></td>
+                            </tr>
+                            <tr>
+                                <td class="icon-users"></td>
+                                <td class="legendLabel">تعداد مکانیکی:</td>
+                                <td class="legendLabel" id="stats_users_type_mechanic"></td>
+                            </tr>
+                            <tr>
+                                <td class="icon-users"></td>
+                                <td class="legendLabel">تعداد نمایندگی :</td>
+                                <td class="legendLabel" id="stats_users_type_agent"></td>
+                            </tr>
+                            <tr>
+                                <td class="icon-users"></td>
+                                <td class="legendLabel">تعداد درخواست جدید نمایندگی:</td>
+                                <td class="legendLabel" id="stats_users_agent_request"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="col-xs-3">
+                    <ul class="doughnut-legend">
+                        <li id="stats_legend_users_c1"><span class="c1"></span> 	تعداد مشتری</li>
+                        <li id="stats_legend_users_c2"><span class="c2"></span> 	تعداد مکانیکی</li>
+                        <li id="stats_legend_users_c3"><span class="c3"></span> 	تعداد نمایندگی</li>
+                    </ul>
+
+                </div>
+
+                <div class="col-xs-4">
+                    <div id="ct-chart_user" class="ct-perfect-fourth">
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 animatedParent animateOnce z-index-46">
+        <div class="panel panel-default animated fadeInUp go">
+            <div class="panel-heading clearfix">
+                <div class="panel-title">سفارشات</div>
+                <a class="icon-pencil"></a>
+            </div>
+            <div class="panel-body">
+                <div class="col-xs-5">
+                    <table class="table-responsive">
+                        <tbody>
+                            <tr>
+                                <td class="icon-pencil"></td>
+                                <td class="legendLabel">تعداد کل سفارشات:</td>
+                                <td class="legendLabel" id="stats_orders_all"></td>
+                            </tr>
+                            <tr>
+                                <td class="icon-pencil"></td>
+                                <td class="legendLabel">سفارشات در حال بررسی:</td>
+                                <td class="legendLabel" id="stats_orders_type_1"></td>
+                            </tr>
+                            <tr>
+                                <td class="icon-user"></td>
+                                <td class="legendLabel">سفارشات تایید شده:</td>
+                                <td class="legendLabel" id="stats_orders_type_2"></td>
+                            </tr>
+                            <tr>
+                                <td class="icon-users"></td>
+                                <td class="legendLabel">سفارشات تایید نشده :</td>
+                                <td class="legendLabel" id="stats_orders_type_3"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-xs-3">
+                    <ul class="doughnut-legend">
+                        <li><span class="c1"></span>سفارشات در حال بررسی</li>
+                        <li><span class="c2"></span>سفارشات تایید شده</li>
+                        <li><span class="c3"></span>سفارشات تایید نشده</li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-4">
+                    <div id="ct-chart_order" class="ct-perfect-fourth">
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 animatedParent animateOnce z-index-46">
+        <div class="panel panel-default animated fadeInUp go">
+            <div class="panel-heading clearfix">
+                <div class="panel-title">باشگاه مشتریان</div>
+                <a class="icon-user"></a>
+            </div>
+            <div class="panel-body">
+                <div class="col-xs-5">
+                    <table class="table-responsive">
+                        <tbody>
+                            <tr>
+                                <td class="icon-users"></td>
+                                <td class="legendLabel">تعداد کل هدایای باشگاه مشتریان:</td>
+                                <td class="legendLabel" id="stats_club_all"></td>
+
+                            </tr>
+                            <tr>
+                                <td class="icon-user"></td>
+                                <td class="legendLabel">درخواست هدایای در حال بررسی:</td>
+                                <td class="legendLabel" id="stats_club_type_1"></td>
+                            </tr>
+                            <tr>
+                                <td class="icon-user"></td>
+                                <td class="legendLabel">درخواست هدایا تایید شده:</td>
+                                <td class="legendLabel" id="stats_club_type_2"></td>
+                            </tr>
+                            <tr>
+                                <td class="icon-users"></td>
+                                <td class="legendLabel">درخواست هدایای تایید نشده :</td>
+                                <td class="legendLabel" id="stats_club_type_3"></td>
+                            </tr>
+                            <tr>
+                                <td class="icon-picasa"></td>
+                                <td class="legendLabel">هدایای ارسال شده :</td>
+                                <td class="legendLabel" id="stats_club_type_4"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="col-xs-3">
+                    <ul class="doughnut-legend">
+                        <li><span class="c1"></span>درخواست هدایای در حال بررسی</li>
+                        <li><span class="c2"></span>درخواست هدایا تایید شده</li>
+                        <li><span class="c3"></span>درخواست هدایای تایید نشده</li>
+                        <li><span class="c4"></span>هدایای ارسال شده</li>
+                    </ul>
+
+                </div>
+
+                <div class="col-xs-4">
+                    <div id="ct-chart_club" class="ct-perfect-fourth">
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 animatedParent animateOnce z-index-46">
+        <div class="panel panel-default animated fadeInUp go">
+            <div class="panel-heading clearfix">
+                <div class="panel-title">تایید اصالت کالا و کالاهای ثبت شده</div>
+                <a class="icon-user"></a>
+            </div>
+            <div class="panel-body">
+                <div class="col-xs-5">
+                    <table class="table-responsive">
+                        <tbody>
+                            <tr>
+                                <td class="icon-users"></td>
+                                <td class="legendLabel">کل درخواست های اصالت کالا:</td>
+                                <td class="legendLabel" id="stats_product_verify_all"></td>
+
+                            </tr>
+                            <tr>
+                                <td class="icon-user"></td>
+                                <td class="legendLabel">درخواست های موفق تایید اصالت کالا:</td>
+                                <td class="legendLabel" id="stats_product_verify_state_1"></td>
+                            </tr>
+                            <tr>
+                                <td class="icon-user"></td>
+                                <td class="legendLabel">درخواست های مردود تایید اصالت کالا:</td>
+                                <td class="legendLabel" id="stats_product_verify_state_0"></td>
+                            </tr>
+                            <tr>
+                                <td class="icon-users"></td>
+                                <td class="legendLabel">کالاهای معیوب :</td>
+                                <td class="legendLabel" id="stats_product_verify_breakdown"></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="col-xs-3">
+                    <ul class="doughnut-legend">
+                        <li><span class="c1"></span>درخواست های موفق تایید اصالت کالا</li>
+                        <li><span class="c2"></span>درخواست های مردود تایید اصالت کالا</li>
+                    </ul>
+
+                </div>
+
+                <div class="col-xs-4">
+                    <div id="ct-chart_product_verify" class="ct-perfect-fourth">
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 animatedParent animateOnce z-index-46">
+        <div class="panel panel-default animated fadeInUp go">
+            <div class="panel-heading clearfix">
+                <div class="panel-title">پیشنهادات و انتقادات و درخواست ها</div>
+                <a class="icon-user"></a>
+            </div>
+            <div class="panel-body">
+                <div class="col-xs-5">
+                    <table class="table-responsive">
+                        <tbody>
+                            <tr>
+                                <td class="icon-users"></td>
+                                <td class="legendLabel">تعداد کل:</td>
+                                <td class="legendLabel" id="stats_suggestion_all"></td>
+
+                            </tr>
+                            <tr>
+                                <td class="icon-user"></td>
+                                <td class="legendLabel">درخواست های ارسال شده:</td>
+                                <td class="legendLabel" id="stats_suggestion_state_1"></td>
+                            </tr>
+                            <tr>
+                                <td class="icon-user"></td>
+                                <td class="legendLabel">درخواست های در حال بررسی:</td>
+                                <td class="legendLabel" id="stats_suggestion_state_2"></td>
+                            </tr>
+                            <tr>
+                                <td class="icon-users"></td>
+                                <td class="legendLabel">درخواست های پاسخ داده شده :</td>
+                                <td class="legendLabel" id="stats_suggestion_state_3"></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="col-xs-3">
+                    <ul class="doughnut-legend">
+                        <li><span class="c1"></span>درخواست های ارسال شده</li>
+                        <li><span class="c2"></span>درخواست های در حال بررسی</li>
+                        <li><span class="c3"></span>درخواست های پاسخ داده شده</li>
+                    </ul>
+
+                </div>
+
+                <div class="col-xs-4">
+                    <div id="ct-chart_suggestion" class="ct-perfect-fourth">
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 animatedParent animateOnce z-index-46">
+        <div class="panel panel-default animated fadeInUp go">
+            <div class="panel-heading clearfix">
+                <div class="panel-title">پیام ها</div>
+                <a class="icon-user"></a>
+            </div>
+            <div class="panel-body">
+                <div class="col-xs-5">
+                    <table class="table-responsive">
+                        <tbody>
+                            <tr>
+                                <td class="icon-users"></td>
+                                <td class="legendLabel">تعدادکل پیام ها:</td>
+                                <td class="legendLabel" id="stats_notify_all"></td>
+
+                            </tr>
+                            <tr>
+                                <td class="icon-user"></td>
+                                <td class="legendLabel">پیام های عمومی:</td>
+                                <td class="legendLabel" id="stats_notify_public"></td>
+                            </tr>
+                            <tr>
+                                <td class="icon-user"></td>
+                                <td class="legendLabel">پیام های خصوصی:</td>
+                                <td class="legendLabel" id="stats_notify_private"></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="col-xs-3">
+                    <ul class="doughnut-legend">
+                        <li><span class="c1"></span>پیام های عمومی</li>
+                        <li><span class="c2"></span>پیام های خصوصی</li>
+                    </ul>
+
+                </div>
+
+                <div class="col-xs-4">
+                    <div id="ct-chart_notify" class="ct-perfect-fourth">
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<footer class="animatedParent animateOnce z-index-10">
+    <div class="footer-main animated fadeInUp slow">&copy; 2017 <strong>CustomerClub</strong> Admin Panel by <a target="_blank" href="http://sid-co.ir/">SDICO</a> </div>
+</footer>
+

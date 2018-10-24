@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "خودروهای کاربر";
+    Layout = "~/Views/shared/_layout.cshtml";
+}
+<script>
+    window.onload = load;
+    var _listUserRegisterProductes = [];
+    function load()
+    {
+        Showgrid();
+    }
+    //function creatmodaluserGift() {
+    //    creatformUserGift(UserGiftRegister, [
+    //        { name: "Id", type: "hidden", title: "" },
+    //{ name: "NameUser", type: "text", title: "نام کاربر" },
+    //   { name: "IdGift", type: "select", title: "عنوان هدیه" },
+    //    { name: "IdGiftSendWay", type: "select", title: "نحوه ارسال" },
+    //    { name: "MinPoint", type: "text", title: "امتیاز" },
+    //    { name: "IdUser", type: "hidden", title: "" }],
+    //        [{ caption: "ثبت", event: null, Class: "primary", IsClose: true },
+    //        { caption: "بازگشت", event: null, Class: "info", IsClose: true }],
+    //        "ثبت هدایای مشتری");
+
+    //    $(document).ready(function () {
+    //        $(btnregisterforUserGift).click(function () {
+    //            FormRegister.submit();
+    //            alert("عملیات با موفقیت انجام شد");
+    //            $(Id).attr("value", 0);
+    //        });
+    //        $(btnExitUserGift).click(function () {
+    //            $(Id).attr("value", 0);
+    //        });
+    //    });
+    //}
+
+    function Showgrid() {
+        var _listUserRegisterProduct = JSON.parse('@Html.Raw(ViewBag.listUserRegisterProduct)');
+        _listUserRegisterProductes = _listUserRegisterProduct;
+        _Username.innerHTML = _listUserRegisterProductes[0].UserName;
+        DataTableUserRegisterProduct(_listUserRegisterProduct,
+            [{ Data: "Id", Title: "Id" },
+            { Data: "Serial", Title: "سریال" },
+            { Data: "ProductName", Title: "نام محصول" },
+            { Data: "DateRegister", Title: "تاریخ ثبت" },
+            { Data: "Point", Title: "امتیاز" },
+            { Data: "StateBreakDowns", Title: "وضعیت خرابی" }], divUserRegisterProduct,
+            { RowNumber: true },
+            [{ Text: "ویرایش", Icon: "icon-pencil", class: "btn btn-blue", event: null },
+                { Text: "حذف", Icon: "icon-trash", class: "btn btn-red", event: null }]);
+    }
+
+    //function EditUserGift(id) {
+    //    btnUserGiftRegister.click();
+    //    var _find = false;
+    //    for (var i in _ListUserGift) {
+    //        if (_ListUserGift[i].Id == id) {
+    //            _find = true;
+    //            _list.Id = _ListUserGift[i].Id;
+    //            _list.UserName = _ListUserGift[i].UserName;
+    //            _list.IdGift = _ListUserGift[i].IdGift;
+    //            _list.IdGiftSendWay = _ListUserGift[i].IdGiftSendWay;
+    //            _list.MinPoint = _ListUserGift[i].MinPoint;
+    //            _list.IdUser = _ListUserGift[i].IdUser;
+    //            break;
+    //        }
+    //    }
+    //    if (_find) {
+    //        Id.value = _list.Id;
+    //        NameUser.value = _list.UserName;
+    //        IdGift.value = _list.IdGift;
+    //        IdGiftSendWay.value = _list.IdGiftSendWay;
+    //        MinPoint.value = _list.MinPoint;
+    //        IdUser.value = _list.IdUser;
+    //    }
+    //}
+    //function DeleteUserGift(id) {
+    //    _iduserGift.value = id;
+    //    if (!confirm("آیا عملیات انجام شود؟"))
+    //        return;
+    //    FormDelete.submit();
+    //    alert("عملیات با موفقیت انجام شد");
+    //}
+</script>
+@*<form style="display:none;" id="FormDelete" action="/UserGift/DeleteUserGift" method="post" enctype="application/x-www-form-urlencoded">
+    <input id="_iduserGift" name="Id" />
+</form>
+<form id="FormRegister" action="/UserGift/RegisterUserGift" method="post" enctype="application/x-www-form-urlencoded" class="form-horizontal">
+    <div id="UserGiftRegister">
+    </div>
+</form>*@
+<div class="panel panel-default col-xs-2">
+    <h5 style="margin-right:40px;margin-bottom:5px;margin-top:10px;">امتیازکل</h5>
+    <img  src="~/img/index.jpg" style="height:100px;width:100px;margin-right:10px"/>
+    <span style="margin-right:40px;margin-bottom:10px;margin-top:5px;" class="badge badge-bordered">@ViewBag.TotalPoint</span>
+</div>
+<div class="row"></div>
+<div class="panel-heading clearfix">
+    <h3>@ViewBag.Title</h3>
+</div>
+<div class="row">
+    <div class="col-lg-12 animatedParent animateOnce z-index-50">
+        <div class="panel panel-default animated fadeInUp">
+            <div class="panel-heading clearfix">
+                <h2 id="_Username" name="Username"></h2>
+                
+                @*<button id="btnUserRegisterProduct" type="button" onclick="UserGiftRegisterform.reset()" class="btn btn-primary" data-toggle="modal" data-target="#UserGiftRegisterModal" data-backdrop="static">ثبت جدید</button>*@
+
+            </div>
+            <div class="panel-body">
+                <div class="row animatedParent animateOnce z-index-50">
+                    <div class="col-lg-12 animated fadeInUp">
+                        <div id="divUserRegisterProduct" class="table-responsive">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

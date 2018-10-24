@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "خودروی من";
+    Layout = "~/Views/shared/_layout.cshtml";
+}
+<script>
+    var _ListUsercar = [];
+    var _carlist = [];
+    var _list = [];
+    window.onload = load;
+    function load()
+    {
+        creatmodalusercar();
+        showcars();
+        showUsers();
+        Showgrid();
+    }
+    function creatmodalusercar() {
+        creatformUserCar(UserCarRegister, [{ name: "Id", type: "hidden", title: "" },
+            { name: "IdUser", type: "select", title: "نام کاربر" },
+            { name: "IdCar", type: "select", title: "نام خودرو" },
+        { name: "Kilometer", type: "text", title: "کیلومتر" },
+        { name: "Pelak", type: "text", title: "پلاک" },
+        { name: "ProduceYear", type: "text", title: "سال تولید" }],
+            [{ caption: "ثبت", event: null, Class: "primary", IsClose: true },
+            { caption: "بازگشت", event: null, Class: "info", IsClose: true }],
+            "ثبت مشتری");
+        $(document).ready(function () {
+            $(btnregisterforUserCar).click(function () {
+                $(IdUser).removeAttr("disabled");
+                $(IdCar).removeAttr("disabled");
+                FormRegister.submit();
+                $(IdUser).attr("disabled", "disabled");
+                $(IdCar).attr("disabled", "disabled");
+                alert("عملیات با موفقیت انجام شد");
+            });
+        });
+    }
+    function showUsers() {
+        var _userlist = JSON.parse('@Html.Raw(ViewBag._userlist)');
+        var str = "";
+        for (var i in _userlist) {
+            str += '<option value="' + _userlist[i].Id + '">' + _userlist[i].Display + '</option>';
+        }
+        IdUser.innerHTML = str;
+    }
+    function showcars() {
+        var _listcar = JSON.parse('@Html.Raw(ViewBag.carlist)');
+        _carlist = _listcar;
+        var str = "";
+        for (var i in _listcar) {
+            str += '<option value="' + _listcar[i].Id + '">' + _listcar[i].Display + '</option>';
+        }
+        IdCar.innerHTML = str;
+    }
+    function Showgrid() {
+        var _listusercar = JSON.parse('@Html.Raw(ViewBag._list)');
+        _ListUsercar = _listusercar;
+        for (var i in _ListUsercar) {
+            _Username.innerHTML = _ListUsercar[i].Username;
+            break;
+        }
+        DataTableUserCar(_listusercar,
+            [{ Data: "Id", Title: "Id" },
+            { Data: "Name", Title: "نام خودرو کاربر" },
+            { Data: "Kilometer", Title: "کیلومتر" },
+            { Data: "Pelak", Title: "پلاک" },
+            { Data: "ProduceYear", Title: "سال تولید" }], divUserCar, { RowNumber: true },
+            [{ Text: "ویرایش", Icon: "icon-pencil", class: "btn btn-blue", event: EditUserCar },
+                { Text: "حذف", Icon: "icon-trash", class: "btn btn-red", event: DeleteUserCar }]);
+    }
+    function EditUserCar(id) {
+        btnRegisterUserCar.click();
+        var _find = false;
+        for (var i in _ListUsercar) {
+            if (_ListUsercar[i].Id == id) {
+                _find = true;
+                _list.Id = _ListUsercar[i].Id;
+                _list.IdCar = _ListUsercar[i].IdCar;
+                _list.IdUser = _ListUsercar[i].IdUser;
+                _list.Kilometer = _ListUsercar[i].Kilometer;
+                _list.Pelak = _ListUsercar[i].Pelak;
+                _list.ProduceYear = _ListUsercar[i].ProduceYear;
+                break;
+            }
+        }
+        if (_find) {
+            Id.value = _list.Id;
+            IdCar.value = _list.IdCar;
+            IdUser.value = _list.IdUser;
+            Kilometer.value = _list.Kilometer;
+            Pelak.value = _list.Pelak;
+            ProduceYear.value = _list.ProduceYear;
+        }
+    }
+    function DeleteUserCar(id) {
+        _idusercar.value = id;
+        var _find = false;
+        for (var i in _ListUsercar) {
+            if (_ListUsercar[i].Id == id) {
+                _find = true;
+                _iduser.value = _ListUsercar[i].IdUser;
+                break;
+            }
+        }
+        if (!confirm("آیا عملیات انجام شود؟"))
+            return;
+        FormDelete.submit();
+        alert("عملیات با موفقیت انجام شد");
+    }
+</script>
+<form style="display:none;" id="FormDelete" action="/UserCar/DeleteUserCar" method="post" enctype="application/x-www-form-urlencoded">
+    <input id="_iduser" name="IdUser" />
+    <input id="_idusercar" name="Id" />
+</form>
+<form id="FormRegister" action="/UserCar/RegisterUserCar" method="post" enctype="application/x-www-form-urlencoded" class="form-horizontal">
+    <div id="UserCarRegister">
+    </div>
+</form>
+<h2>@ViewBag.Title</h2>
+<a href="~/Users/Index" class="btn btn-primary">بازگشت به مدیریت کاربران</a>
+<div class="row">
+    <div class="col-lg-12 animatedParent animateOnce z-index-50">
+        <div class="panel panel-default animated fadeInUp">
+            <div class="panel-heading clearfix">
+                <h2 id="_Username" name="Username"></h2>
+                <button style="display:none;" id="btnRegisterUserCar" type="button" onclick="UserCarRegisterform.reset()" class="btn btn-primary" data-toggle="modal" data-target="#UserCarRegisterModal" data-backdrop="static">ثبت جدید</button>
+
+            </div>
+            <div class="panel-body">
+                <div class="row animatedParent animateOnce z-index-50">
+                    <div class="col-lg-12 animated fadeInUp">
+                        <div id="divUserCar" class="table-responsive">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
